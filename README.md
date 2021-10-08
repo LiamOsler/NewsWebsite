@@ -9,10 +9,10 @@
 
 ### Website goals: 
 
-* Aggregate rulings from the Courts of Nova Scotia, present them in an accessible and easy to read fashion for users from a broad range of demographics.
-    - Index page "newsfeed" that aggregates sources such as the Courts of Nova Scotia's RSS Feed, CanLII's Nova Scotia RSS Feeds and other local news outlets for stories relevant to the court rulings and legislation in Nova Scotia.
-    - Means for users to add comments and/or reactions to the content on the Index page.
-    - Means for users to "follow" a certain topic, ruling, user, or other items.
+- Aggregate rulings from the Courts of Nova Scotia, present them in an accessible and easy to read fashion for users from a broad range of demographics.
+- Index page "newsfeed" that aggregates sources such as the Courts of Nova Scotia's RSS Feed, CanLII's Nova Scotia RSS Feeds and other local news outlets for stories relevant to the court rulings and legislation in Nova Scotia.
+- Means for users to add comments and/or reactions to the content on the Index page.
+- Means for users to "follow" a certain topic, ruling, user, or other items.
 
 
 * Provide a forum for discussions about Nova Scotia court rulings, legislation and legal affairs.

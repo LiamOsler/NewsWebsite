@@ -3,6 +3,8 @@
 <?php include "inc/header.php" ?>
 
 <main>
+
+<div class = "container">
 <h1>Latest News</h1>
 
 <pre>
@@ -17,6 +19,8 @@
     }
 ?>
 </pre>
+
+</div>
 
 </main>
 

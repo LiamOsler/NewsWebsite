@@ -24,17 +24,17 @@ CREATE TABLE usersFollowsUsers(
 );
 
 CREATE TABLE administrators (
-	adminID int NOT NULL AUTO_INCREMENT,
+	adminID int AUTO_INCREMENT,
 	userID int,
     PRIMARY KEY (adminID),
-    FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE
+    FOREIGN KEY (userID) REFERENCES users(userID)
 );
 
 CREATE TABLE moderators (
 	modID int AUTO_INCREMENT,
 	userID int,
     PRIMARY KEY (modID),
-    FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE
+    FOREIGN KEY (userID) REFERENCES users(userID)
 );
 
 CREATE TABLE outlets(

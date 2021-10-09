@@ -5,12 +5,12 @@ CREATE SCHEMA IF NOT EXISTS legalWebsite;
 USE legalWebsite;
 
 CREATE TABLE users (
-    userID int,
+    userID int AUTO_INCREMENT,
 	userName varchar(255),
 	firstName varchar(255),
     lastName varchar(255),
 	emailAddress varchar(255),
-	registrationDate date,
+	registrationDate datetime,
     verificationStatus bool,
     profileVisibility bool,
     PRIMARY KEY (userID)
@@ -23,22 +23,22 @@ CREATE TABLE usersFollowsUsers(
     FOREIGN KEY (followID) REFERENCES users(userID)
 );
 
-CREATE TABLE adminstrators (
-	adminID int,
+CREATE TABLE administrators (
+	adminID int NOT NULL AUTO_INCREMENT,
 	userID int,
     PRIMARY KEY (adminID),
     FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE
 );
 
 CREATE TABLE moderators (
-	modID int,
+	modID int AUTO_INCREMENT,
 	userID int,
     PRIMARY KEY (modID),
     FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE
 );
 
 CREATE TABLE outlets(
-	outletID int,
+	outletID int AUTO_INCREMENT,
     outletName varchar(255),
     PRIMARY KEY (outletID)
 );
@@ -51,17 +51,18 @@ CREATE TABLE usersFollowsOutlets(
 );
 
 CREATE TABLE articles(
-	articleID int,
+	articleID int AUTO_INCREMENT,
     outletID int,
     authorName varchar(255),
     articleURL varchar(255),
-    publicationDate date,
+    articleText varchar(2047),
+    publicationDate datetime,
     PRIMARY KEY (articleID),
     FOREIGN KEY (outletID) REFERENCES outlets(outletID)
 );
 
 CREATE TABLE articleReactions(
-	reactionID int,
+	reactionID int AUTO_INCREMENT,
     reactionType varchar(8),
     userID int,
     articleID int,
@@ -71,7 +72,7 @@ CREATE TABLE articleReactions(
 );
 
 CREATE TABLE articleComments(
-	commentID int,
+	commentID int AUTO_INCREMENT,
     commentText varchar(1024),
     userID int,
     articleID int,
@@ -81,7 +82,7 @@ CREATE TABLE articleComments(
 );
 
 CREATE TABLE commentReactions(
-	reactionID int,
+	reactionID int AUTO_INCREMENT,
     reactionType varchar(8),
     userID int,
     commentID int,

@@ -1,4 +1,4 @@
--- Script for 
+-- Script for inserting test values in to the database:
 
 -- Create values for the news outlets:
 INSERT INTO `users` VALUES

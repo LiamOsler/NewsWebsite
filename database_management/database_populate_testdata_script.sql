@@ -116,6 +116,8 @@ select * from articleReactions;
 select * from usersFollowsOutlets;
 select * from usersFollowsUsers;
 
+
 -- Join the article with the outlet to get the title:
 SELECT articles.articleText, articles.articleURL, articles.authorName, outlets.outletName FROM articles
 JOIN outlets on articles.outletID = outlets.outletID;
+

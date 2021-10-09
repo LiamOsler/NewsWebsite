@@ -44,3 +44,23 @@
         - Same features as registered users, but may also publish opinion pieces/articles/announcements 
 
 
+---
+
+### Technology Stack:
+- PHP
+- MySQL
+- JavaScript
+- CSS
+
+### Project Structure:
+
+```R
+.
+├── inc             <-- A directory with the included page content
+│   ├── footer.php  <-- The page footer content
+│   └── header.php  <-- The page header content
+├── styles          <-- The styles directory
+│   └── main.css    <-- The main style file
+├── about.php       <-- An about page
+└── index.php       <-- The website's homepage
+```

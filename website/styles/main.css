@@ -6,8 +6,20 @@
     background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 }
 
-.jumbotron h1, p{
+.jumbotron h1{
+    color: white;
+}
+
+.jumbotron p{
     color: white;
 }
 
 input{}
+
+a{
+    color: #0dcaf0;
+}
+
+a:active{
+    color: #f00ddd;
+}

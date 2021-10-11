@@ -4,6 +4,7 @@
 
 - Adam Melvin 
 - Liam Osler 
+- Sarah Pollock-Jordan
 - Rachel Woodside
 ---
 
@@ -43,7 +44,6 @@
         - User icon shows a verification symbol
         - Same features as registered users, but may also publish opinion pieces/articles/announcements 
 
-
 ---
 
 ### Technology Stack:
@@ -53,14 +53,21 @@
 - CSS
 
 ### Project Structure:
-
 ```R
 .
-├── inc             <-- A directory with the included page content
-│   ├── footer.php  <-- The page footer content
-│   └── header.php  <-- The page header content
-├── styles          <-- The styles directory
-│   └── main.css    <-- The main style file
-├── about.php       <-- An about page
-└── index.php       <-- The website's homepage
+├── db
+│   ├── db.php
+│   └── functions.php
+├── inc
+│   ├── components
+│   │   ├── latestnews.php
+│   │   └── login.php
+│   ├── footer.php
+│   └── header.php
+├── styles
+│   └── main.css
+├── about.php
+├── index.php
+└── users.php
 ```
+

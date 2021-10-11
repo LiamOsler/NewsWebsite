@@ -55,6 +55,7 @@ CREATE TABLE articles(
     outletID int,
     authorName varchar(255),
     articleURL varchar(255),
+    articleHeadline varchar(2047),
     articleText varchar(2047),
     publicationDate datetime,
     PRIMARY KEY (articleID),

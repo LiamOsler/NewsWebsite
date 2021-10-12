@@ -23,3 +23,8 @@ a{
 a:active{
     color: #f00ddd;
 }
+
+body.modal{
+  height: 100vh;
+  overflow-y: hidden;
+}

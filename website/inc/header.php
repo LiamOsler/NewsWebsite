@@ -46,7 +46,7 @@
       </li>
     </ul>
     <span class="navbar-text">
-        <a href="#" style = "text-decoration: none">Login &nbsp;<i class="bi-person-circle" style="font-size: 1em"></i></i></a>    
+      <button  class="btn btn-info btn-lg"  data-toggle="modal" data-target="#loginModal"> <a href="#" style = "text-decoration: none">Login &nbsp;<i class="bi-person-circle" style="font-size: 1em"></i></i></a>  </button>  
     </span>
   </div>
 </nav>
@@ -61,7 +61,7 @@
         <div class="input-group input-group-lg">
             <input type="text" class="form-control" placeholder="Search">
                 <div class="input-group-btn">
-                    <button class="btn btn-info btn-lg" type="submit"><i class="bi-search" style="font-size: 1.5rem;"></i></button>
+                    <button  class="btn btn-info btn-lg" type="submit"><i class="bi-search" style="font-size: 1.5rem;"></i></button>
                 </div>
             </div>
     </form>
@@ -69,4 +69,7 @@
     <br>
   </div>
 </div>
+
+<?php include "inc/components/login.php" ?>
+
 

@@ -51,9 +51,15 @@
 - MySQL
 - JavaScript
 - CSS
+- Libraries:
+    - [Bootstrap 4.0](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+
+### Database Schema:
+![Image of Schema](READMEimg/dbschema.png)
+
 
 ### Project Structure:
-```R
+```
 .
 ├── database_management
 │   ├── database_creation_script.sql

@@ -55,19 +55,27 @@
 ### Project Structure:
 ```R
 .
-├── db
-│   ├── db.php
-│   └── functions.php
-├── inc
-│   ├── components
-│   │   ├── latestnews.php
-│   │   └── login.php
-│   ├── footer.php
-│   └── header.php
-├── styles
-│   └── main.css
-├── about.php
-├── index.php
-└── users.php
+├── database_management
+│   ├── database_creation_script.sql
+│   ├── database_populate_testdata_script.sql
+│   └── useful_queries.sql
+├── project_management
+├── website
+│   ├── db
+│   │   ├── db.php
+│   │   └── functions.php
+│   ├── inc
+│   │   ├── components
+│   │   │   ├── latestnews.php
+│   │   │   └── login.php
+│   │   ├── footer.php
+│   │   └── header.php
+│   ├── styles
+│   │   └── main.css
+│   ├── about.php
+│   ├── index.php
+│   └── users.php
+├── LICENSE
+└── README.md
 ```
 

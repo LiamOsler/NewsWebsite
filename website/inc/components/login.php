@@ -3,7 +3,7 @@
 ?>
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="loginModalLabel">Login</h5>
@@ -20,9 +20,7 @@
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
       </form>
-      </div>
-      <div class="modal-footer">
-      <button class="btn btn-secondary btn-lg"  data-toggle="modal" data-target="#newAccountModal">Create Account <i class="bi-person-plus" style="font-size: 1rem;"></i></button>
+        <button class="btn btn-outline-secondary btn-lg"  data-toggle="modal" data-target="#newAccountModal">New User <i class="bi-person-plus" style="font-size: 1rem;"></i></button>
         <button class="btn btn-info btn-lg"  type="submit">Login <i class="bi-person-check-fill" style="font-size: 1rem;"></i></button>
       </div>
     </div>
@@ -84,9 +82,7 @@
             </div>
         </div>
       </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-info btn-lg"  type="submit">Create Account <i class="bi-person-plus" style="font-size: 1rem;"></i></button>
+      <button class="btn btn-info btn-lg"  type="submit">Create Account <i class="bi-person-plus" style="font-size: 1rem;"></i></button>
       </div>
     </div>
   </div>

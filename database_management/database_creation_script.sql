@@ -17,28 +17,28 @@ CREATE TABLE users (
 );
 
 CREATE TABLE usersFollowsUsers(
-	userID int,
+    userID int,
     followID int,
     FOREIGN KEY (userID) REFERENCES users(userID),
     FOREIGN KEY (followID) REFERENCES users(userID)
 );
 
 CREATE TABLE administrators (
-	adminID int AUTO_INCREMENT,
+    adminID int AUTO_INCREMENT,
 	userID int,
     PRIMARY KEY (adminID),
     FOREIGN KEY (userID) REFERENCES users(userID)
 );
 
 CREATE TABLE moderators (
-	modID int AUTO_INCREMENT,
+    modID int AUTO_INCREMENT,
 	userID int,
     PRIMARY KEY (modID),
     FOREIGN KEY (userID) REFERENCES users(userID)
 );
 
 CREATE TABLE outlets(
-	outletID int AUTO_INCREMENT,
+    outletID int AUTO_INCREMENT,
     outletName varchar(255),
     PRIMARY KEY (outletID)
 );

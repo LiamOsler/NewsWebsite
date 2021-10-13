@@ -23,7 +23,7 @@ foreach($result as $article){
 <hr>
 
 <?php
-$querySQL = "   SELECT commentID, commentText, userName FROM articleComments
+$querySQL = "   SELECT commentID, commentText, userName, users.userID as commenterID FROM articleComments
                 JOIN articles ON articleComments.articleID = articles.articleID
                 JOIN users ON articleComments.userID = users.userID 
                 AND articles.articleID = {$articleID}";
@@ -32,8 +32,8 @@ $result = $dbconn->query($querySQL);
 foreach($result as $comment){
 ?>
 
-<div class="card bg-light mb-3" style="">
-  <div class="card-header"><?php echo($comment["userName"]); ?></div>
+<div class="card bg-light mb-3">
+  <div class="card-header"><a href = "users.php?userID=<?php echo($comment["commenterID"]); ?>">@<?php echo($comment["userName"]); ?></a></div>
   <div class="card-body">
     <h5 class="card-title"><?php echo($comment["commentText"]); ?></h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

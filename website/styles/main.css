@@ -1,11 +1,16 @@
 
 a{
-    color: #0dcaf0;
+    color: #049ab8;
+}
+
+a:hover{
+    color: #8d0081; 
 }
 
 a:active{
     color: #f00ddd;
 }
+
 
 body.modal{
   height: 100vh;
@@ -29,6 +34,14 @@ background: rgba(90, 90, 90);
 background: rgba(0, 0, 0, 0.2);
 }
 
+.nav-item{
+    text-align: right;
+}
+
+.navbar-text{
+    float: right;
+}
+
 .jumbotron{
     background-color: #000000;
     opacity: 0.9;
@@ -46,4 +59,9 @@ background: rgba(0, 0, 0, 0.2);
 }
 .card{
     margin-bottom: 1em;
+}
+
+.user-grid{
+    text-align: center;
+    width: 100%;
 }

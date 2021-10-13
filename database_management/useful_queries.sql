@@ -1,3 +1,16 @@
+-- Show the full contents of each of the tables:
+select * from outlets;
+select * from articles;
+select * from users;
+select * from administrators;
+select * from moderators;
+select * from articleComments;
+select * from commentReactions;
+select * from articleReactions;
+select * from usersFollowsOutlets;
+select * from usersFollowsUsers;
+
+
 -- Get the contents of the articles and their reaction and comment counts, order with newest posts first
 SELECT articles.articleID, articleText, articleCommentCount, articleReactionCount, authorName, outletName, articleHeadline FROM articles
 JOIN outlets ON articles.outletID = outlets.outletID

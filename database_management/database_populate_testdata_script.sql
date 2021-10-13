@@ -120,22 +120,3 @@ INSERT INTO `usersFollowsUsers` VALUES
 (6, 2),
 (6, 3),
 (7, 1);
-
-
--- Show the full contents of each of the tables:
-select * from outlets;
-select * from articles;
-select * from users;
-select * from administrators;
-select * from moderators;
-select * from articleComments;
-select * from commentReactions;
-select * from articleReactions;
-select * from usersFollowsOutlets;
-select * from usersFollowsUsers;
-
-
--- Join the article with the outlet to get the title:
-SELECT articles.articleText, articles.articleURL, articles.authorName, outlets.outletName FROM articles
-JOIN outlets on articles.outletID = outlets.outletID;
-

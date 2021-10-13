@@ -61,15 +61,15 @@ FROM articleReactions
 WHERE articleID = 1;
 
 -- List all the users that follow a specific user:
-SELECT userFollower.userName as userFollowerName, userFollows.userName as userFollowsName  FROM usersFollowsUsers
+SELECT userFollower.userName as userFollowerName, userFollows.userName as userFollowsName, userFollower.userID as followsID  FROM usersFollowsUsers
 JOIN users userFollower ON userFollower.userID = usersFollowsUsers.userID
 JOIN users userFollows ON userFollows.userID = usersFollowsUsers.followID
-AND userFollows.userID = 4;
+AND userFollows.userID = 1;
 
 -- Get the list of all the users that user follows::
-SELECT *, userFollower.userName as userFollowerName, userFollows.userName as userFollowsName, userFollows.userID as followerID  FROM usersFollowsUsers
+SELECT userFollower.userName as userFollowerName, userFollows.userName as userFollowsName, userFollows.userID as followerID  FROM usersFollowsUsers
 JOIN users userFollower ON userFollower.userID = usersFollowsUsers.userID
-AND userFollower.userID = 4
+AND userFollower.userID = 1
 JOIN users userFollows ON userFollows.userID = usersFollowsUsers.followID;
 
 

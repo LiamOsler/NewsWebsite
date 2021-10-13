@@ -29,23 +29,20 @@
                     
                         <p class="card-text"><?php echo($article["articleText"])?></p>
 
-                        <p>
+                        <a href= "article.php?articleID=<?php echo($article["articleID"])?>">
                             <?php 
                                 if($article["articleReactionCount"]){
-                                    echo($article["articleReactionCount"] . " Reactions");
+                                    echo($article["articleReactionCount"] . " reactions | ");
                                 }else{
-                                    echo("No Reactions");
+                                    echo("0 reactions | ");
                                 }
-                            ?>
-                            and
-                            <?php 
                                 if($article["articleCommentCount"]){
-                                    echo($article["articleCommentCount"] . " Comments");
+                                    echo($article["articleCommentCount"] . " comments");
                                 }else{
-                                    echo("No comments");
+                                    echo("0 comments");
                                 }
                             ?>
-                        </p>
+                        </a>
 
                     </div>
             </div>

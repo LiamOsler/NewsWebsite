@@ -45,6 +45,9 @@
       <li class="nav-item">
         <a class="nav-item nav-link" href="#">About</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link" href="users.php">Users</a>
+      </li>
     </ul>
     <span class="navbar-text">
       <button  class="btn btn-info btn-lg"  data-toggle="modal" data-target="#loginModal"> <a href="#" style = "text-decoration: none">Login &nbsp;<i class="bi-person-circle" style="font-size: 1em"></i></i></a>  </button>  

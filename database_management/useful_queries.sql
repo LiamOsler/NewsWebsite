@@ -2,6 +2,7 @@
 select * from outlets;
 select * from articles;
 select * from users;
+select * from userLogin;
 select * from administrators;
 select * from moderators;
 select * from articleComments;

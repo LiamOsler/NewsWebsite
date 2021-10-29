@@ -6,6 +6,7 @@ USE legalWebsite;
 
 CREATE TABLE users (
     userID int AUTO_INCREMENT,
+    privateID varchar(255),
 	userName varchar(255),
 	firstName varchar(255),
     lastName varchar(255),
@@ -15,6 +16,15 @@ CREATE TABLE users (
     profileVisibility bool,
     PRIMARY KEY (userID)
 );
+
+CREATE TABLE userLogin(
+	privateID varchar(255),
+    userSalt VARCHAR(32),
+    userPepper VARCHAR(32),
+    userHash VARCHAR(32),
+    PRIMARY KEY (privateID)
+    );
+
 
 CREATE TABLE usersFollowsUsers(
     userID int,

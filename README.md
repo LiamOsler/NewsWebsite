@@ -1,4 +1,7 @@
 ### Nova Scotia Court News Website
+
+#### Early concept homepage design:
+<img src="READMEimg/concept1.png" height="400">
 --- 
 ### Contributors:
 
@@ -54,40 +57,76 @@
 - Libraries:
     - [Bootstrap 4.0](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 
+    
+### Website file structure:
+```
+website
+├── db
+│   ├── db.php
+│   └── functions.php
+├── inc
+│   ├── components
+│   │   ├── articledisplay.php
+│   │   ├── latestnews.php
+│   │   ├── login.php
+│   │   ├── searcharea.php
+│   │   └── userdisplay.php
+│   ├── footer.php
+│   └── header.php
+├── styles
+│   └── main.css
+├── about.php
+├── article.php
+├── index.php
+├── loginpage.php
+├── newuser.php
+├── test.php
+└── users.php
+```
+
 ### Database Schema:
-![Image of Schema](READMEimg/dbschema.png)
+![Image of Schema](READMEimg/dbschema-2.png)
 
-
-### Project Structure:
-```
-.
-├── database_management
-│   ├── database_creation_script.sql
-│   ├── database_populate_testdata_script.sql
-│   └── useful_queries.sql
-├── project_management
-├── website
-│   ├── db
-│   │   ├── db.php
-│   │   └── functions.php
-│   ├── inc
-│   │   ├── components
-│   │   │   ├── latestnews.php
-│   │   │   └── login.php
-│   │   ├── footer.php
-│   │   └── header.php
-│   ├── styles
-│   │   └── main.css
-│   ├── about.php
-│   ├── index.php
-│   └── users.php
-├── LICENSE
-└── README.md
-```
 
 ## Sample Code:
+### Creating tables for the users, their salt and peppers: 
+```sql
+CREATE TABLE users (
+    userID int AUTO_INCREMENT,
+    privateID varchar(255),
+	userName varchar(255),
+	firstName varchar(255),
+    lastName varchar(255),
+	emailAddress varchar(255),
+	registrationDate datetime,
+    verificationStatus bool,
+    profileVisibility bool,
+    PRIMARY KEY (userID),
+	INDEX NAME (privateID)
+);
 
-### Password Salting Routine (with print output):
+CREATE TABLE userSaltAndPepper(
+	privateID varchar(255),
+    userSalt varchar(32),
+    userPepper varchar(32),
+    PRIMARY KEY (privateID),
+    FOREIGN KEY (privateID) REFERENCES users(privateID)
+    );
+    
+CREATE TABLE userHashes(
+	privateID varchar(255),
+	passwordHash varchar(32),
+    PRIMARY KEY (privateID),
+    FOREIGN KEY (privateID) REFERENCES users(privateID)
+    );
+```
+
+Note: the user has both a public "userID", which is a simple incremental value used for the purposes of posting content on the website, and for following other users. The user also has a "privateID" which is used only for the password related purposes.
+
+### Populating the tables:
+
+
+### Password input check salting routine (with print output) in PHP:
 ```php
 <?php
     $usernameInput = sanitizeData($_POST["username"]);
@@ -171,3 +210,16 @@
     } 
 ?>
 ```
+
+### User enters their password in the login modal:
+![Image of login salt, pepper and hashing](READMEimg/login-2.png)
+### The output of the code above:
+![Image of login salt, pepper and hashing](READMEimg/login-3.png)
+### Explanation:
+1. The user's input is displayed (as shown in the figure above, "Art" is the username and "password" is the password)
+2. The database is queried for the username, and if it is found the username and the user's privateID are displayed. If the username is not found the string "Username or Password Incorrect" is displayed.
+3. The user salt and pepper table is queried for the privateID, and the privateID, the userSalt and the userPepper are displayed on the screen.
+4. The user's salt is concatenated to the password input (in this case just the word "password", as above) and the user's pepper, which is written as  ``` $saltAndPepperPasswordInput = $userSalt . $passwordInput . $userPepper;``` in the code above.
+5. This salt and peppered password is hashed with MD5
+6. The userHash database is queried using the username's corresponding privateID and the stored password hash is displayed.
+7. A parity check is performed. If the checksum of the salted and peppered input matches the stored password hash, "Password is correct" is displayed. If not "Username or Password is Incorrect" is displayed.

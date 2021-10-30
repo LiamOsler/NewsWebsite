@@ -1,5 +1,3 @@
-<?php include "db/db.php" ?>
-
 <?php include "inc/header.php" ?>
 
 <main>

@@ -3,6 +3,7 @@
 #### Early concept homepage design:
 <img src="READMEimg/concept1.png" height="400">
 --- 
+
 ### Contributors:
 
 - Adam Melvin 

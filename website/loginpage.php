@@ -3,6 +3,17 @@
 <div class = "container">
 
 <?php
+    if(isset($_SESSION["userName"]))
+    {
+        echo "Hello ".  $_SESSION["userName"] . " " . $_SESSION["userID"];
+        echo "<br>";
+    }
+    else
+    {
+        echo "Hello";
+        echo "<br>";
+    }
+
     $usernameInput = sanitizeData($_POST["username"]);
     $passwordInput = sanitizeData($_POST["password"]);
 
@@ -12,7 +23,7 @@
     echo "<br>";
     echo($passwordInput);
 
-    $querySQL = "   SELECT userName, privateID from users 
+    $querySQL = "   SELECT userName, userID, privateID from users 
                     WHERE userName = '{$usernameInput}'";
     $result = $dbconn->query($querySQL);
     $rowcount = mysqli_num_rows($result); 
@@ -23,11 +34,13 @@
     }  
     else{
         foreach($result as $current){
+            $userID = $current["userID"];
+            $userName = $current["userName"];
             $privateID = $current["privateID"];
             echo "<br>";
             echo("Username found, privateID " );
             echo "<br>";
-            echo($current["userName"] . ", " . $privateID );
+            echo($userName . ", " . $privateID );
             echo "<br>";
 
             //Get the user's salt and peppers for password spicing:
@@ -78,6 +91,9 @@
         echo "<br>";
         if($saltAndPepperPasswordInputChecksum == $passwordHash){
             echo "Password is correct";
+            $_SESSION["userName"] = $userName;
+            $_SESSION["userID"] = $userID;
+
         }else{
             echo "Username or Password Incorrect";
         }

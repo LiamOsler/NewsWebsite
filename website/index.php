@@ -1,11 +1,5 @@
-<?php
-session_start();
-
-?>
-
-<?php include "db/db.php" ?>
-
 <?php include "inc/header.php" ?>
+<?php include "inc/components/searcharea.php" ?>
 
 <main>
     <div class = "container">

@@ -91,7 +91,8 @@ website
 
 
 ## Sample Code:
-### Creating tables for the users, their salt and peppers: 
+### Creating tables for the users, their salt and peppers:
+Three tables will be used for the login process, the users table, the userSaltAndPepper table and the userHashes table. The userHashes table contains the  
 ```sql
 CREATE TABLE users (
     userID int AUTO_INCREMENT,
@@ -125,8 +126,39 @@ CREATE TABLE userHashes(
 
 Note: the user has both a public "userID", which is a simple incremental value used for the purposes of posting content on the website, and for following other users. The user also has a "privateID" which is used only for the password related purposes.
 
-### Populating the tables:
+### Creating some test user accounts
+Format for insertion is userID (auto incremented so left as null), privateID (randomized string using UUID()), username, first name, last name, email address, time of registration (uses current_timestamp), the user's verification status (true or false), and the user's provile visibility setting (true or false).
+```sql
+INSERT INTO `users` VALUES
+(NULL, MD5(UUID()), "Site Administator", "", "", "admin@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
+(NULL, MD5(UUID()), "Art", "Arthur", "Kirkland", "kirkland@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
+(NULL, MD5(UUID()), "Frank", "Francis", "Rayford", "rayford@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
+(NULL, MD5(UUID()), "Henry", "Henry", "Fleming", "fleming@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
+(NULL, MD5(UUID()), "JayP", "Jay", "Porter", "jayp@gmail.com", CURRENT_TIMESTAMP, TRUE, TRUE),
+(NULL, MD5(UUID()), "DJ", "Dave", "Jameson", "dj@gmail.com", CURRENT_TIMESTAMP, TRUE, TRUE),
+(NULL, MD5(UUID()), "Windy", "Gail", "Packer", "windy12345@yahoo.com", CURRENT_TIMESTAMP, TRUE, TRUE);
+```
 
+### Creating some salt and pepper values for test accounts in SQL:
+Once the test accounts have been added to the database, we can generate random a salt and pepper value for each of the users. In this case I have trimmeda random UUID to 8 characters using ```LEFT(MD5(UUID()), 8)```
+
+```sql
+-- Create some random fake salt and pepper values for all the users:
+INSERT INTO `userSaltAndPepper`(privateID, userSalt, userPepper)
+SELECT privateID, LEFT(MD5(UUID()), 8), LEFT(MD5(UUID()), 8)
+FROM `users`;
+```
+
+### Hashing the salt and pepper values together with a password
+```sql
+-- Concat the user salt and peppers together with the word "password" then calculate their MD5 checksum and set it to the user's passwordHash:
+INSERT INTO `userHashes`(privateID, passwordHash)
+SELECT privateID, MD5(CONCAT(userSalt, "password", userPepper))
+FROM `userSaltAndPepper`;
+```
+
+### User enters their password in the login modal:
+![Image of login salt, pepper and hashing](READMEimg/login-2.png)
 
 ### Password input check salting routine (with print output) in PHP:
 ```php
@@ -213,10 +245,10 @@ Note: the user has both a public "userID", which is a simple incremental value u
 ?>
 ```
 
-### User enters their password in the login modal:
-![Image of login salt, pepper and hashing](READMEimg/login-2.png)
-### The output of the code above:
+### The output of the code above when the password is correct:
 ![Image of login salt, pepper and hashing](READMEimg/login-3.png)
+### The output of the code above when the password is incorrect:
+![Image of login salt, pepper and hashing](READMEimg/login-4.png)
 ### Explanation:
 1. The user's input is displayed (as shown in the figure above, "Art" is the username and "password" is the password)
 2. The database is queried for the username, and if it is found the username and the user's privateID are displayed. If the username is not found the string "Username or Password Incorrect" is displayed.
@@ -225,3 +257,77 @@ Note: the user has both a public "userID", which is a simple incremental value u
 5. This salt and peppered password is hashed with MD5
 6. The userHash database is queried using the username's corresponding privateID and the stored password hash is displayed.
 7. A parity check is performed. If the checksum of the salted and peppered input matches the stored password hash, "Password is correct" is displayed. If not "Username or Password is Incorrect" is displayed.
+
+### The same code without console logging:
+```php
+<?php
+    //Sanitize the username and password input:
+    $usernameInput = sanitizeData($_POST["username"]);
+    $passwordInput = sanitizeData($_POST["password"]);
+
+    //Query the users table for the username
+    $querySQL = "   SELECT userName, userID, privateID from users 
+                    WHERE userName = '{$usernameInput}'";
+    $result = $dbconn->query($querySQL);
+    $rowcount = mysqli_num_rows($result); 
+
+    //If the username isn't found no rows will be returned
+    if($rowcount < 1){
+        //If no username found then Set the username or password incorrect value to TRUE
+        $incorrect = TRUE;
+    }  
+    else{
+        //Get the first result as the current item:
+        foreach($result as $current){
+            //Set the userID, userName and privateID to their own variables:
+            $userID = $current["userID"];
+            $userName = $current["userName"];
+            $privateID = $current["privateID"];
+            //Get the user's salt and peppers for password spicing:
+            $querySQL = "   SELECT privateID, userSalt, userPepper from userSaltAndPepper 
+                            WHERE privateID = '{$privateID}'";
+            $result = $dbconn->query($querySQL);
+
+            //Get the first result as the current item:
+            foreach($result as $current){
+                //Set the user's salt and peppers to their own variables:
+                $userSalt = $current["userSalt"];
+                $userPepper = $current["userPepper"] ;
+                //Conatenate the salt, password input and the pepper together
+                $saltAndPepperPasswordInput = $userSalt . $passwordInput . $userPepper;
+                //Get the MD5 checksum of $saltAndPepperPasswordInput and set it to a variable:
+                $saltAndPepperPasswordInputChecksum = md5($saltAndPepperPasswordInput);
+
+                //Get the user's hashed password (with salt and pepper) from the database:
+                $querySQL = "   SELECT privateID, passwordHash from userHashes
+                                WHERE privateID = '{$privateID}'";
+                $result = $dbconn->query($querySQL);
+                foreach($result as $current){
+                    //Set the user's hashed password to variable:
+                    $passwordHash = $current["passwordHash"];
+                }
+
+            }
+        }
+        //Check if the hashed input matches the user's hashed password:
+        if($saltAndPepperPasswordInputChecksum == $passwordHash){
+            //If the password is correct, we can set the SESSION userName and userID values:
+            $_SESSION["userName"] = $userName;
+            $_SESSION["userID"] = $userID;
+            //Redirect the user 
+            header("Location: index.php");
+
+        }else{
+            //If password incorrect then Set the username or password incorrect value to TRUE
+            $incorrect = TRUE;
+        }
+    }
+    if($incorrect){
+        ?> 
+            <!--HTML CODE to enter a different password or username  -->
+        <?php
+    } 
+?>    
+```
+### When the user logs in successfully, the text in the login button is replaced with "My Profile" and an option to "Logout" is shown with an open door icon: 
+![Image of login salt, pepper and hashing](READMEimg/login-5.png)

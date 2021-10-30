@@ -1,8 +1,12 @@
 <?php
-function sanitizeData ($string){
-    $sanitizedString = trim($string);
-    $sanitizedString = htmlspecialchars($sanitizedString);
-    $sanitizedString = stripslashes($sanitizedString);
-    return $sanitizedString;
+function hello(){
+    echo("hello");
+}
+
+function sanitizeData ($data){
+    $data = htmlspecialchars($data);
+    $data = stripslashes($data);
+    $data = trim($data);
+    return $data;
 }
 ?>

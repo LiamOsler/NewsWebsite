@@ -12,16 +12,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action = "loginpage.php" method = "POST">
           <div class="form-group">
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <input type="username" class="form-control" id="usernameInput" aria-describedby="usernameHelp" placeholder="Username" name = "username">
           </div>
           <div class="form-group">
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name = "password">
           </div>
-      </form>
+      
         <button class="btn btn-outline-secondary btn-lg"  data-toggle="modal" data-target="#newAccountModal">New User <i class="bi-person-plus" style="font-size: 1rem;"></i></button>
-        <button class="btn btn-info btn-lg"  type="submit">Login <i class="bi-person-check-fill" style="font-size: 1rem;"></i></button>
+        <button class="btn btn-info btn-lg"  type="submit" >Login <i class="bi-person-check-fill" style="font-size: 1rem;"></i></button>
+        </form>
       </div>
     </div>
   </div>
@@ -82,7 +83,7 @@
             </div>
         </div>
       </form>
-      <button class="btn btn-info btn-lg"  type="submit">Create Account <i class="bi-person-plus" style="font-size: 1rem;"></i></button>
+      <button class="btn btn-info btn-lg" type="submit">Create Account <i class="bi-person-plus" style="font-size: 1rem;"></i></button>
       </div>
     </div>
   </div>

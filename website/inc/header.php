@@ -79,6 +79,6 @@
 </nav>
 
 
-<?php include "inc/components/login.php" ?>
+<?php include "inc/components/loginform.php" ?>
 
 

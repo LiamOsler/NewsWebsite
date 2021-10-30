@@ -14,16 +14,25 @@ CREATE TABLE users (
 	registrationDate datetime,
     verificationStatus bool,
     profileVisibility bool,
-    PRIMARY KEY (userID)
+    PRIMARY KEY (userID),
+	INDEX NAME (privateID)
 );
 
-CREATE TABLE userLogin(
+CREATE TABLE userSaltAndPepper(
 	privateID varchar(255),
-    userSalt VARCHAR(32),
-    userPepper VARCHAR(32),
-    userHash VARCHAR(32),
-    PRIMARY KEY (privateID)
+    userSalt varchar(32),
+    userPepper varchar(32),
+    PRIMARY KEY (privateID),
+    FOREIGN KEY (privateID) REFERENCES users(privateID)
     );
+    
+CREATE TABLE userHashes(
+	privateID varchar(255),
+	passwordHash varchar(32),
+    PRIMARY KEY (privateID),
+    FOREIGN KEY (privateID) REFERENCES users(privateID)
+    );
+
 
 
 CREATE TABLE usersFollowsUsers(

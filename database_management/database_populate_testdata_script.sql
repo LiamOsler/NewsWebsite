@@ -1,6 +1,6 @@
 -- Script for inserting test values in to the database:
 
--- Create values for the news outlets:
+-- Create fake users:
 INSERT INTO `users` VALUES
 (NULL, MD5(UUID()), "Site Administator", "", "", "admin@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
 (NULL, MD5(UUID()), "Art", "Arthur", "Kirkland", "kirkland@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
@@ -10,25 +10,32 @@ INSERT INTO `users` VALUES
 (NULL, MD5(UUID()), "DJ", "Dave", "Jameson", "dj@gmail.com", CURRENT_TIMESTAMP, TRUE, TRUE),
 (NULL, MD5(UUID()), "Windy", "Gail", "Packer", "windy12345@yahoo.com", CURRENT_TIMESTAMP, TRUE, TRUE);
 
-select * from `users`;
-
-INSERT INTO `userLogin`(privateID, userSalt, userPepper)
+-- Create some random fake salt and pepper values for all the users:
+INSERT INTO `userSaltAndPepper`(privateID, userSalt, userPepper)
 SELECT privateID, LEFT(MD5(UUID()), 8), LEFT(MD5(UUID()), 8)
 FROM `users`;
+
+-- Concat the user salt and peppers together with the word "password" then calculate their MD5 checksum and set it to the user's passwordHash:
+INSERT INTO `userHashes`(privateID, passwordHash)
+SELECT privateID, MD5(CONCAT(userSalt, "password", userPepper))
+FROM `userSaltAndPepper`;
 
 -- UPDATE `userLogin` SET userHash = MD5("password")
 -- WHERE privateID = "0b0194516f3ae301008cb78ddf89701e" ;
 
-select * from `userLogin`;
 
+-- Define which users are the adminstrators:
 INSERT INTO `administrators` VALUES
 (NULL, 1);
 
+
+-- Define which users are the moderators:
 INSERT INTO `moderators` VALUES
 (NULL, 1),
 (NULL, 2),
 (NULL, 3);
 
+-- Insert some sample outlet (news publishing agency, court, etc) values:
 INSERT INTO `outlets` VALUES
 (NULL, "Small Claims Court of Nova Scotia"),
 (NULL, "Provincial Court of Nova Scotia"),
@@ -64,6 +71,7 @@ INSERT INTO `articles` VALUES
 "Enim tortor at auctor urna nunc id cursus metus. Ut sem nulla pharetra diam sit amet nisl. Id porta nibh venenatis cras sed felis eget. Adipiscing commodo elit at imperdiet dui accumsan sit amet nulla. Eu volutpat odio facilisis mauris sit. In fermentum et sollicitudin ac orci phasellus egestas tellus rutrum. Tellus mauris a diam maecenas sed enim ut sem. Lacinia at quis risus sed vulputate odio ut. Sem fringilla ut morbi tincidunt augue interdum. Ultrices dui sapien eget mi proin. Iaculis at erat pellentesque adipiscing commodo elit.
 ", CURRENT_TIMESTAMP);
 
+-- Create some reactions to the articles:
 INSERT INTO `articleReactions` VALUES
 (NULL, "LIKE", 1, 1),
 (NULL, "LIKE", 2, 1),
@@ -103,6 +111,7 @@ INSERT INTO `usersFollowsOutlets` VALUES
 (6, 2),
 (7, 1);
 
+-- Define which users follow which users:
 INSERT INTO `usersFollowsUsers` VALUES
 (1, 2),
 (1, 3),

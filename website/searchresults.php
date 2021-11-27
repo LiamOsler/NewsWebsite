@@ -1,5 +1,5 @@
 <?php include "inc/header.php" ?>
-<?php include "inc/components/searcharea.php" ?>
+<?php include "inc/components/advsearch.php" ?>
 
 <main>
     <div class = "container">

@@ -1,1 +1,1 @@
-<p> News and Opinion content goes here! </p>
+<h1>News & Opinion</h1>

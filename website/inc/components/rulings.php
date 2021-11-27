@@ -1,1 +1,1 @@
-<p> Content on rulings goes here! </p>
+<h1>Rulings</h1>

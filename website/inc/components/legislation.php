@@ -1,1 +1,1 @@
-<p> Legislation content does here! </p>
+<h1>Legislation</h1>

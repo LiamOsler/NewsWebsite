@@ -330,3 +330,13 @@ FROM `userSaltAndPepper`;
 ```
 ### When the user logs in successfully, the text in the login button is replaced with "My Profile" and an option to "Logout" is shown with an open door icon: 
 ![Image of login salt, pepper and hashing](READMEimg/login-5.png)
+
+### Citations
+1.  Title: W3Schools HTML Input Types
+    URL: https://www.w3schools.com/html/html_form_input_types.asp
+    Date Accessed: 27 Nov 2021
+    Purpose: Reviewed use of different types of input to generate an advanced search interface
+2.  Title: Forms Bootstrap
+    URL: https://getbootstrap.com/docs/4.1/components/forms/#checkboxes-and-radios
+    Date Accessed: 27 Nov 2021
+    Purpose: Referred to existing Bootstrap framework styling mechanisms for radio type inputs

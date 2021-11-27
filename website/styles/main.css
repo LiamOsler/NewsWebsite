@@ -60,6 +60,9 @@ background: rgba(0, 0, 0, 0.2);
 .card{
     margin-bottom: 1em;
 }
+.form-check-label {
+    color: white;
+}
 
 .user-grid{
     text-align: center;

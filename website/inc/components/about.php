@@ -1,3 +1,1 @@
-<?php
-?>
-<p> About content goes here! <p>
+<h1>About Nova Scotia Legal News</h1>

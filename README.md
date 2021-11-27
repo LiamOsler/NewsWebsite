@@ -9,7 +9,6 @@
 
 - Adam Melvin 
 - Liam Osler 
-- Sarah Pollock-Jordan
 - Rachel Woodside
 ---
 

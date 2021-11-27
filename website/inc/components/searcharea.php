@@ -12,6 +12,8 @@
               <button class="btn btn-info btn-lg" type="submit"><i class="bi-search" style="font-size: 1.5rem;"></i>
             </div>
         </div>
+        <br>
+        <a href=searchresults.php>Advanced Search</a>
     </form>
     <br>
 

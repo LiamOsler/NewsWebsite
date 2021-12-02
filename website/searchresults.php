@@ -10,7 +10,29 @@
     if (isset($_GET["search-text"])) {
         $searchText = $_GET["search-text"];
 
-        $searchSQL = "  SELECT articles.articleID, articleText, articleCommentCount, articleReactionCount, authorName, outletName, articleHeadline FROM articles
+        // If the search-by criterion set, alter the SQL query to match the search terms with the specified criterion
+        if (isset($_GET["search-by"])) {
+
+            // Alter the SQL query to match the search terms with the specified criterion
+            $searchCriterion = $_GET["search-by"];
+            
+            $searchSQL = "  SELECT articles.articleID, articleText, articleCommentCount, articleReactionCount, authorName, outletName, articleHeadline FROM articles
+                            JOIN outlets ON articles.outletID = outlets.outletID
+                            LEFT JOIN (
+                            SELECT articleID, COUNT(DISTINCT(reactionID)) AS articleReactionCount
+                            FROM articlereactions
+                            GROUP BY articleID) articlereactions on articles.articleID = articlereactions.articleID
+                            LEFT JOIN (
+                            SELECT articleID, COUNT(DISTINCT(commentID)) AS articleCommentCount
+                            FROM articlecomments
+                            GROUP BY articleID) articlecomments on articles.articleID = articlecomments.articleID
+                            WHERE {$searchCriterion} LIKE '%{$searchText}%'
+                            ORDER BY articles.articleID DESC;";             
+
+        // Otherwise, perform the default search by article title
+        } else {
+            
+            $searchSQL = "  SELECT articles.articleID, articleText, articleCommentCount, articleReactionCount, authorName, outletName, articleHeadline FROM articles
                         JOIN outlets ON articles.outletID = outlets.outletID
                         LEFT JOIN (
                         SELECT articleID, COUNT(DISTINCT(reactionID)) AS articleReactionCount
@@ -21,8 +43,10 @@
                         FROM articlecomments
                         GROUP BY articleID) articlecomments on articles.articleID = articlecomments.articleID
                         WHERE articleHeadline LIKE '%{$searchText}%'
-                        ORDER BY articles.articleID DESC;";
-        $results = $dbconn->query($searchSQL);
+                        ORDER BY articles.articleID DESC;";   
+        }
+
+        $results = $dbconn->query($searchSQL);        
 
         // If there are no results
         if (mysqli_num_rows($results) == 0) {

@@ -46,7 +46,7 @@
         <a class="nav-item nav-link" href="#">News & Opinion</a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" href="#">About</a>
+        <a class="nav-item nav-link" href="about.php">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-item nav-link" href="users.php">Users</a>

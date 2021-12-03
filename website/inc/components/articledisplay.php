@@ -8,6 +8,7 @@ $querySQL = "   SELECT * FROM articles
 $result = $dbconn->query($querySQL);
 foreach($result as $article){
 ?>
+    <!--Edited by Adam Melvin - B00597004-->
 <div class="jumbotron">
     <div class="container">
         <h1 class="display-4"><?php echo($article["articleHeadline"]); ?></h1>

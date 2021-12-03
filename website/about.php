@@ -1,3 +1,4 @@
+<!--Edited by Adam Melvin - B00597004-->
 <?php include "inc/header.php" ?>
 
 <main>
@@ -23,7 +24,7 @@
         </p>
         <p class="lead">
             Have a particular area of law that you're interested in? On NSLN, you can stay up to date and
-            "follow" specific topics, rulings, or journalists you are interested in. 
+            "follow" specific topics, rulings, or journalists you are interested in.
         </p>
     </div>
 </main>

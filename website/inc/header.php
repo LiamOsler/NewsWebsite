@@ -34,19 +34,22 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Latest News<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php">Latest News<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" href="#">Rulings</a>
+        <a class="nav-item nav-link" href="index.php?show=rulings">Rulings</a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" href="#">Legislation</a>
+        <a class="nav-item nav-link" href="index.php?show=legislation">Legislation</a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" href="#">News & Opinion</a>
+        <a class="nav-item nav-link" href="index.php?show=news-opinion">News & Opinion</a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" href="about.php">About</a>
+<<<<<<< HEAD
+=======
+        <a class="nav-item nav-link" href="index.php?show=about">About</a>
+>>>>>>> origin/main
       </li>
       <li class="nav-item">
         <a class="nav-item nav-link" href="users.php">Users</a>
@@ -79,6 +82,6 @@
 </nav>
 
 
-<?php include "inc/components/login.php" ?>
+<?php include "inc/components/loginform.php" ?>
 
 

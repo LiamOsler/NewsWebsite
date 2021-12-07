@@ -1,9 +1,8 @@
+<!--Edited by Adam Melvin - B00597004-->
 <?php include "inc/header.php" ?>
 
 <main>
-    <div class = "container">
         <?php include "inc/components/articledisplay.php" ?>
-    </div>
 </main>
 
 <script>

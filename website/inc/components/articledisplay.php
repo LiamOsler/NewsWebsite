@@ -8,20 +8,25 @@ $querySQL = "   SELECT * FROM articles
 $result = $dbconn->query($querySQL);
 foreach($result as $article){
 ?>
-<h1><?php echo($article["articleHeadline"]); ?></h1>
-<hr>
-<p><?php echo($article["outletName"]); ?></p>
-<p><?php echo($article["articleText"]); ?></p>
-<hr>
+    <!--Edited by Adam Melvin - B00597004-->
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4"><?php echo($article["articleHeadline"]); ?></h1>
+        <p class="lead"><?php echo($article["outletName"]); ?></p>
+    </div>
+</div>
+<div class="container">
+    <p class="lead"><?php echo($article["articleText"]); ?></p>
+    <hr>
 <?php
 }
 ?>
-<h2>Reactions</h2>
-<hr>
+    <h2>Reactions</h2>
+    <hr>
 
-<h2>Comments</h2>
-<hr>
-
+    <h2>Comments</h2>
+    <hr>
+</div>
 <?php
 $querySQL = "   SELECT commentID, commentText, userName, users.userID as commenterID FROM articleComments
                 JOIN articles ON articleComments.articleID = articles.articleID

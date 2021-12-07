@@ -1,4 +1,7 @@
 <!--Edited by Adam Melvin - B00597004-->
+<?php include "inc/header.php";
+?>
+
 <main>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">

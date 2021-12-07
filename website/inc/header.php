@@ -46,10 +46,7 @@
         <a class="nav-item nav-link" href="index.php?show=news-opinion">News & Opinion</a>
       </li>
       <li class="nav-item">
-<<<<<<< HEAD
-=======
         <a class="nav-item nav-link" href="index.php?show=about">About</a>
->>>>>>> origin/main
       </li>
       <li class="nav-item">
         <a class="nav-item nav-link" href="users.php">Users</a>

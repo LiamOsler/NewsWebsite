@@ -49,17 +49,17 @@
     </div>
     <div class="container">
         <h2>Contact Us</h2>
-        <div id="contact-form-feedback">
+        <div id="contact-form-feedback" class="message lead">
             <?php echo $contactFormFeedback;?>
         </div>
         <form action="about.php" method="POST">
             <div class="form-group">
                 <label for="contact-name">Enter your name:</label>
-                <input type="text" class="form-control" id="contact-name" placeholder="Name" name="contact-name" >
+                <input type="text" class="form-control" id="contact-name" placeholder="Name" name="contact-name" required>
             </div>
             <div class="form-group">
                 <label for="contact-msg">Message:</label>
-                <textarea class="form-control" id="contact-msg" placeholder="Enter your message here..." name="contact-msg" rows=5></textarea>
+                <textarea class="form-control" id="contact-msg" placeholder="Enter your message here..." name="contact-msg" rows=5 required></textarea>
             </div>
             <button class="btn btn-info btn-lg" name="contact-us" type="submit" >Submit Message</button>
         </form>

@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "legalWebsite";
+$dbname = "GroupProject";
 $dbconn = new mysqli($host, $username, $password, $dbname);
 
 //Check for DB connection:

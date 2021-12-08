@@ -32,5 +32,4 @@
 </script>
 
 <?php 
-echo($_SESSION['userName']);
 include "inc/footer.php" ?>

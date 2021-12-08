@@ -10,7 +10,7 @@
 			</div>
 			<div class="modal-body">
 				<?php
-					include 'includes/components/loginform.php';
+					include 'inc/components/loginform.php';
 				?>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 			</div>
 			<div class="modal-body">
 				<?php
-					include 'includes/components/userregistrationform.php';
+					include 'inc/components/userregistrationform.php';
 				?>
 			</div>
 		</div>

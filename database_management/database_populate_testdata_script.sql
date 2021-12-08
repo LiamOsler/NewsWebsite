@@ -2,7 +2,7 @@
 
 -- Create fake users:
 INSERT INTO `users` VALUES
-(NULL, MD5(UUID()), "Site Administator", "", "", "admin@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
+(NULL, MD5(UUID()), "Site Administator", "", "", "usersadmin@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
 (NULL, MD5(UUID()), "Art", "Arthur", "Kirkland", "kirkland@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
 (NULL, MD5(UUID()), "Frank", "Francis", "Rayford", "rayford@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
 (NULL, MD5(UUID()), "Henry", "Henry", "Fleming", "fleming@novascotialegalnews.ca", CURRENT_TIMESTAMP, TRUE, TRUE),
@@ -17,7 +17,7 @@ FROM `users`;
 
 -- Concat the user salt and peppers together with the word "password" then calculate their MD5 checksum and set it to the user's passwordHash:
 INSERT INTO `userHashes`(privateID, passwordHash)
-SELECT privateID, MD5(CONCAT(userSalt, "password", userPepper))
+SELECT privateID, MD5(CONCAT(userSalt, MD5("password"), userPepper))
 FROM `userSaltAndPepper`;
 
 -- UPDATE `userLogin` SET userHash = MD5("password")

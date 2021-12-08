@@ -16,7 +16,7 @@ function showUserResult(str) {
     }
 
   }
-  xmlhttp.open("GET","includes/components/checkusername.php?username="+str, true);
+  xmlhttp.open("GET","inc/components/checkusername.php?username="+str, true);
   xmlhttp.send();
 }
 
@@ -37,7 +37,7 @@ function showEmailResult(str) {
     }
 
   }
-  xmlhttp.open("GET","includes/components/checkuseremail.php?email="+str, true);
+  xmlhttp.open("GET","inc/components/checkuseremail.php?email="+str, true);
   xmlhttp.send();
 }
 
@@ -114,7 +114,7 @@ function showEmailResult(str) {
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroupPrepend2"><i class="bi bi-key"></i></span>
                 </div>
-                <input type="password" class="form-control" id="psw" name="password" placeholder="Password"   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                <input type="password" class="form-control" id="psw" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
             </div>    
         </div>
 

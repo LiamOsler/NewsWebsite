@@ -184,12 +184,78 @@ if($registrationValid == TRUE){
 header("Location: index.php");
 ?>
 ```
-
-![User Registration Form](READMEimg/registration2.png)
+### Checking that inputs conform to standards:
 ![User Registration Form](READMEimg/registration3.png)
-![User Registration Form](READMEimg/registration4.png)
 
-### Creating tables for the users, their salt and peppers:
+```php
+    <div class="col-md-6 mb-6">
+        <label for="validationPhone">Phone Number</label>
+        <input type="phone" class="form-control" name = "phone" id="validationPhone" placeholder="Phone Number" pattern="^([0-9]{3})-?\s?([0-9]{3})-?\s?([0-9]{4})$" value="" required>
+    </div>
+```
+
+### Validating emails are unique:
+![User Registration Form](READMEimg/registration2.png)
+```php
+<?php
+$xmlDoc=new DOMDocument();
+$x=$xmlDoc->getElementsByTagName('link');
+
+//get the q parameter from URL
+$email = sanitizeData($_GET["email"]);
+$resultCount = 0;
+
+//If the query is not empty:
+if (strlen($email)>0) {
+    $querySQL = "   SELECT `emailAddress`
+                    FROM `users`
+                    WHERE `emailAddress` = '{$email}'";
+    $result = $dbconn->query($querySQL);
+
+    foreach($result as $current){
+        $resultCount+=1;
+    }
+}
+if($resultCount > 0){
+    echo "Email is already taken";
+}
+else{
+    echo "Email is valid";
+}
+?>
+```
+
+### Checking that usernames are unique:
+![User Registration Form](READMEimg/registration4.png)
+```php
+
+<?php
+$xmlDoc=new DOMDocument();
+$x=$xmlDoc->getElementsByTagName('link');
+
+$username = sanitizeData($_GET["username"]);
+$resultCount = 0;
+
+if (strlen($username)>0) {
+    $querySQL = "   SELECT userName, userID 
+                    FROM users
+                    WHERE `userName` = '{$username}'";
+    $result = $dbconn->query($querySQL);
+
+    foreach($result as $current){
+        $resultCount+=1;
+    }
+}
+if($resultCount > 0){
+    echo "Username is already taken";
+}
+else{
+    echo "Username is valid";
+}
+?>
+```
+
+### Creating test users in MySQL:
 Three tables will be used for the login process, the users table, the userSaltAndPepper table and the userHashes table. The userHashes table contains the  
 ```sql
 CREATE TABLE users (

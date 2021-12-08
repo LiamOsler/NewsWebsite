@@ -1,7 +1,12 @@
 <div class = "row">
     <?php
         //Get the posted userID from the URL:
-        $userID = $_GET["userID"];
+        
+        if(isset($_GET['userID'])) {
+            $userID = $_GET['userID'];
+        } else {
+            $userID = NULL;
+        }
 
         if (!$userID){
 

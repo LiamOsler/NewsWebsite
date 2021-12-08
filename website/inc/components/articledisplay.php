@@ -1,4 +1,7 @@
 <?php
+  if(empty($_GET["articleID"])){
+    header("Location: index.php");
+  }
   $articleID = $_GET["articleID"];
 
   $querySQL = "   SELECT * FROM articles
@@ -8,29 +11,29 @@
   $result = $dbconn->query($querySQL);
   foreach($result as $article){
 ?>
-
-    <!--Edited by Adam Melvin - B00597004-->
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-4"><?php echo($article["articleHeadline"]); ?></h1>
-        <p class="lead"><?php echo($article["outletName"]); ?></p>
-    </div>
-</div>
-<div class="container">
-    <p class="lead"><?php echo($article["articleText"]); ?></p>
-    <hr>
-<?php
+  <!--Edited by Adam Melvin - B00597004-->
+  <div class="container">
+    <div class = "row">
+      <div class = "col-md-12">
+      <h1 class="display-4"><?php echo($article["articleHeadline"]); ?></h1>
+      <p class="lead">Published By: <a href = "#"><?php echo($article["outletName"]); ?></a></p>
+      <hr>
+      <p class="display-6"><?php echo($article["articleText"]); ?></p>
+      <br>
+      <hr>
+      </div>
+  <?php
   }
 ?>
-    <h2>Reactions</h2>
-    <hr>
-
-    <h2>Comments</h2>
-    <hr>
+<div class = "col-md-12">
+    <h4 class="display-5">Comments</h2>
+</div>
 <?php
   // If the user is logged in, display form for submitting comments
+  
   if(isset($_SESSION["userID"])) {
 ?>
+<div class = "col-md-12">
   <div class="card bg-light mb-3">
     <div class="card-header">New Comment</a></div>
     <div class="card-body">
@@ -44,6 +47,7 @@
       </form>
     </div>
   </div>
+</div>
 
 <?php
   // Close if statement checking for user login status
@@ -56,18 +60,22 @@
                   AND articles.articleID = {$articleID}";
 
   $result = $dbconn->query($querySQL);
-  foreach($result as $comment){
-?>
+  $resultCount = 0;
 
-  <div class="card bg-light mb-3">
-    <div class="card-header"><a href = "users.php?userID=<?php echo($comment["commenterID"]); ?>">@<?php echo($comment["userName"]); ?></a></div>
-    <div class="card-body">
-      <h5 class="card-title"><?php echo($comment["commentText"]); ?></h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  foreach($result as $comment){
+    $resultCount++;
+      ?>
+        <div class = "col-lg-12">
+          <div class="card bg-light mb-3">
+            <div class="card-header"><a href = "users.php?userID=<?php echo($comment["commenterID"]); ?>">@<?php echo($comment["userName"]); ?></a></div>
+            <div class="card-body">
+              <p class="card-text display-6"><?php echo($comment["commentText"]); ?></p>
+            </div>
+          </div>
+        </div>
+        <?php
+        }
+      ?>
     </div>
   </div>
-
-<?php
-}
-?>
 </div>

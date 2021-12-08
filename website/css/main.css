@@ -65,6 +65,16 @@ background: rgba(0, 0, 0, 0.2);
     color: white;
 }
 
+
+.card{
+    margin-bottom: 1em;
+}
+
+.card:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+
 .jumbotron a {
     color: #0dcaf0;
 }
@@ -89,6 +99,7 @@ background: rgba(0, 0, 0, 0.2);
     border-color: black;
 }
 
+
 .form-check-label {
     color: white;
 }
@@ -97,6 +108,32 @@ background: rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 100%;
 }
+
+
+.btn-success{
+    background-color: rgb(49, 210, 242)!important;
+    color: black !important;
+}
+
+.btn{
+    /* float: right; */
+}
+
+.btn-success a:hover{
+    color: white;
+}
+
+#profile-button, #login-button, #logout-button, #newuser-button{
+    margin-left: .5em !important;
+    float: right;
+}
+
+#logout-button:hover{
+    background-color: rgb(255, 183, 0);
+}
+
+#logout-button:active + a{ 
+    color: white;
 
 i {
     font-size: 1em;
@@ -110,5 +147,6 @@ i {
 
 .card:hover {
     box-shadow: 0 0 11px rgba(33,33,33,.2); 
+
 }
 

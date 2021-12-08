@@ -1,4 +1,3 @@
-
 <?php
 include "db/db.php";
 include "db/functions.php"; 
@@ -63,6 +62,8 @@ if($registrationValid == TRUE){
     $result = $dbconn->query($querySQL);
 
     foreach($result as $current){
+        $_SESSION["userID"] = $current["userID"];
+
         $privateID = $current["privateID"];
         $querySQL = "   INSERT INTO `userSaltAndPepper` VALUES 
                         ('{$privateID}', LEFT(MD5(UUID()), 8), LEFT(MD5(UUID()), 8))
@@ -77,13 +78,13 @@ if($registrationValid == TRUE){
         foreach($saltresult as $saltcurrent){
             $userSalt = $saltcurrent["userSalt"];
             $userPepper = $saltcurrent["userPepper"]; 
+            
             $querySQL = "   INSERT INTO `userHashes` VALUES
                             ('{$privateID}', MD5(CONCAT('{$userSalt}', MD5('{$password}'), '{$userPepper}')))
                             ";
                         
 
             $_SESSION["userName"] = $username;
-            $_SESSION["userID"] = $userID;
 
             $dbconn->query($querySQL);
             $dbconn->close();

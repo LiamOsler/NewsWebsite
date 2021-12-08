@@ -77,7 +77,7 @@ background: rgba(0, 0, 0, 0.2);
     color: #f00ddd;
 }
 
-/* Overriding built-in Bootstrap styles for appropriate contrast */
+/* Overriding built-in Bootstrap styles for appropriate contrast and sizing */
 
 .btn a {
     color: black;
@@ -96,6 +96,10 @@ background: rgba(0, 0, 0, 0.2);
 .user-grid {
     text-align: center;
     width: 100%;
+}
+
+i {
+    font-size: 1em;
 }
 
 /* Card styles */

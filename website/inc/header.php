@@ -61,15 +61,15 @@ include "db/functions.php";
     <?php
     if(isset($_SESSION["userName"])){
       ?>
-      <button class="btn btn-outline-secondary btn-lg"><a href="logout.php">Logout <i class="bi-door-open" style="font-size: 1em"></i></i></a>  </button>  
-        <button class="btn btn-info btn-lg"><a href="users.php?userID=<?php echo($_SESSION["userID"])?>" style = "text-decoration: none">My Profile <i class="bi-person-circle" style="font-size: 1em"></i></i></a>  </button>  
+      <button class="btn btn-outline-secondary btn-lg"><a href="logout.php">Logout <i class="bi-door-open"></i></a>  </button>  
+        <button class="btn btn-info btn-lg"><a href="users.php?userID=<?php echo($_SESSION["userID"])?>">My Profile <i class="bi-person-circle"></i></a></button>  
       </span>
       <?php
     }
     else{
       ?>
-      <button class="btn btn-outline-secondary btn-lg"  data-toggle="modal" data-target="#newAccountModal">New User <i class="bi-person-plus" style="font-size: 1rem;"></i></button>
-      <button  class="btn btn-info btn-lg"  data-toggle="modal" data-target="#loginModal"> Login &nbsp;<i class="bi-person-circle" style="font-size: 1em"></i></i></a>  </button>  
+      <button class="btn btn-outline-secondary btn-lg"  data-toggle="modal" data-target="#newAccountModal">New User <i class="bi-person-plus"></i></button>
+      <button  class="btn btn-info btn-lg"  data-toggle="modal" data-target="#loginModal"> Login &nbsp;<i class="bi-person-circle"></i></a></button>  
 
       <?php
     }

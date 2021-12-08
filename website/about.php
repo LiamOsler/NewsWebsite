@@ -65,3 +65,5 @@
         </form>
     </div>
 </main>
+
+<?php include "inc/footer.php" ?>

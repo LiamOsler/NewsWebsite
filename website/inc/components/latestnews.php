@@ -31,11 +31,7 @@
 
                         <a href= "article.php?articleID=<?php echo($article["articleID"])?>">
                             <?php 
-                                if($article["articleReactionCount"]){
-                                    echo($article["articleReactionCount"] . " reactions | ");
-                                }else{
-                                    echo("0 reactions | ");
-                                }
+
                                 if($article["articleCommentCount"]){
                                     echo($article["articleCommentCount"] . " comments");
                                 }else{

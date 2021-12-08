@@ -74,52 +74,7 @@
 - Libraries:
     - [Bootstrap 4.0](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 
-    
-### Website file structure:
-```
-website
-├── about.php
-├── article.php
-├── css
-│   ├── main.css
-│   └── normalize.css
-├── db
-│   ├── db.php
-│   └── functions.php
-├── files
-│   └── CSCI2170-SpiderMan4-Wireframes.pdf
-├── img
-├── inc
-│   ├── components
-│   │   ├── advsearch.php
-│   │   ├── articledisplay.php
-│   │   ├── checkuseremail.php
-│   │   ├── checkusername.php
-│   │   ├── latestnews.php
-│   │   ├── legislation.php
-│   │   ├── loginform.php
-│   │   ├── loginmodal.php
-│   │   ├── news-opinion.php
-│   │   ├── postcomment.php
-│   │   ├── rulings.php
-│   │   ├── searcharea.php
-│   │   ├── userdisplay.php
-│   │   └── userregistrationform.php
-│   ├── footer.php
-│   ├── header.php
-│   └── header.php.orig
-├── index.php
-├── js
-│   └── scripts.js
-├── loginfailed.php
-├── loginpage.php
-├── logout.php
-├── planning
-├── searchresults.php
-├── test.php
-├── userregistration.php
-└── users.php
-```
+
 
 ### Database Schema:
 ![Image of Schema](READMEimg/dbschema-2.png)
@@ -128,6 +83,8 @@ website
 ## Sample Code:
 
 ### Registering users
+![User Registration Form](READMEimg/registration-1.png)
+
 ```php
 <?php
 include "db/db.php";
@@ -224,11 +181,13 @@ if($registrationValid == TRUE){
     }
 
 }
-
 header("Location: index.php");
-
 ?>
 ```
+
+![User Registration Form](READMEimg/registration-2.png)
+![User Registration Form](READMEimg/registration-3.png)
+![User Registration Form](READMEimg/registration-4.png)
 
 ### Creating tables for the users, their salt and peppers:
 Three tables will be used for the login process, the users table, the userSaltAndPepper table and the userHashes table. The userHashes table contains the  

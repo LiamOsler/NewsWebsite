@@ -2,7 +2,13 @@
 
 <footer id="pg-footer">
     <br>
-    <p>&copy; 2021, Nova Scotia Legal News: Bringing the law closer to you.</p>
+    <div class="container">
+        <br>
+        <p>&copy; 2021, Nova Scotia Legal News: Bringing the law closer to you.</p>
+        <a href="admin.php"> Admin Page </a>
+    </div>
+
+
 </footer>
 
 </body>

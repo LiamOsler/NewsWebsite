@@ -22,7 +22,7 @@
             <input type="text" name="search-text" class="form-control" placeholder="Search">
             <label for="search-text" hidden>Search terms:</label>
             <div class="input-group-btn">
-              <button class="btn btn-info btn-lg" type="submit"><i class="bi-search" style="font-size: 1.5rem;"></i>
+              <button class="btn btn-info btn-lg" type="submit"><i class="bi-search"></i>
             </div>
         </div>
         <br>

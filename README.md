@@ -12,6 +12,15 @@
 - Rachel Woodside
 ---
 
+### Contributions:
+
+- Milestone 1: Adam, Liam and Rachel all participated in brainstorming website goals and structure. Adam, Liam and Rachel each wrote up 2-3 user stories. Liam formatted the final planning document and generated prototype images of the webpage.
+
+- Milestone 2: Adam, Liam and Rachel all participated in the conceptual design of the website. Rachel compiled the design plan into the wireframes and annotated them, with feedback from Adam and Liam.
+
+- Milestone 3:
+---
+
 ### Website goals: 
 
 - Aggregate rulings from the Courts of Nova Scotia, present them in an accessible and easy to read fashion for users from a broad range of demographics.
@@ -90,6 +99,110 @@ website
 
 
 ## Sample Code:
+
+### Registering users
+```
+<?php
+include "db/db.php";
+include "db/functions.php"; 
+
+session_name('legalnews');
+session_start();
+
+//Before proceeding, ensure that the posted values are valid for entry in to database:
+$registrationValid = TRUE;
+$email = sanitizeData($_POST["email"]);
+$resultCount = 0;
+if (strlen($email)>0) {
+    $querySQL = "   SELECT `emailAddress`
+                    FROM `users`
+                    WHERE `emailAddress` = '{$email}'";
+    $result = $dbconn->query($querySQL);
+
+    foreach($result as $current){
+        $resultCount+=1;
+    }
+}
+
+//If the email address exists:
+if($resultCount > 0){
+    $registrationValid = FALSE;
+}
+
+$username = sanitizeData($_POST["username"]);
+$resultCount = 0;
+if (strlen($username)>0) {
+    $querySQL = "   SELECT userName, userID 
+                    FROM users
+                    WHERE `userName` = '{$username}'";
+    $result = $dbconn->query($querySQL);
+
+    foreach($result as $current){
+        $resultCount+=1;
+    }
+}
+
+//If the username address exists:
+if($resultCount > 0){
+    $registrationValid = FALSE;
+}
+
+//Otherwise let the user register:
+if($registrationValid == TRUE){
+    $password = sanitizeData($_POST["password"]);
+    $fName = sanitizeData($_POST["fName"]);
+    $lName = sanitizeData($_POST["lName"]);
+    $street = sanitizeData($_POST["street"]);
+    $city = sanitizeData($_POST["city"]);
+    $zip = sanitizeData($_POST["zip"]);
+
+    $querySQL = "   INSERT INTO `users` VALUES
+                    (NULL, MD5(UUID()), '{$username}', '{$fName}', '{$lName}', '{$email}', CURRENT_TIMESTAMP, TRUE, TRUE)";
+
+    $result = $dbconn->query($querySQL);
+
+    $querySQL = "   SELECT userName, userID, privateID
+                    FROM users
+                    WHERE `userName` = '{$username}'";
+    $result = $dbconn->query($querySQL);
+
+    foreach($result as $current){
+        $_SESSION["userID"] = $current["userID"];
+
+        $privateID = $current["privateID"];
+        $querySQL = "   INSERT INTO `userSaltAndPepper` VALUES 
+                        ('{$privateID}', LEFT(MD5(UUID()), 8), LEFT(MD5(UUID()), 8))
+                    ";
+        $dbconn->query($querySQL);
+
+        $querySQL = "   SELECT `userSalt`, `userPepper`, `privateID`
+                        FROM userSaltAndPepper
+                        WHERE `privateID` = '{$privateID}'";
+        $saltresult = $dbconn->query($querySQL);
+
+        foreach($saltresult as $saltcurrent){
+            $userSalt = $saltcurrent["userSalt"];
+            $userPepper = $saltcurrent["userPepper"]; 
+            
+            $querySQL = "   INSERT INTO `userHashes` VALUES
+                            ('{$privateID}', MD5(CONCAT('{$userSalt}', MD5('{$password}'), '{$userPepper}')))
+                            ";
+                        
+
+            $_SESSION["userName"] = $username;
+
+            $dbconn->query($querySQL);
+            $dbconn->close();
+        }
+    }
+
+}
+
+header("Location: index.php");
+
+?>
+```
+
 ### Creating tables for the users, their salt and peppers:
 Three tables will be used for the login process, the users table, the userSaltAndPepper table and the userHashes table. The userHashes table contains the  
 ```sql
@@ -332,11 +445,16 @@ FROM `userSaltAndPepper`;
 ![Image of login salt, pepper and hashing](READMEimg/login-5.png)
 
 ### Citations
-1.  Title: W3Schools HTML Input Types
+1.  Title: UXPin 
+    URL: https://www.uxpin.com/
+    Use: Developing and annotating wireframes
+    Date Accessed: 09 Nov 2021
+    Purpose: Developing and annotating wireframes
+2.  Title: W3Schools HTML Input Types
     URL: https://www.w3schools.com/html/html_form_input_types.asp
     Date Accessed: 27 Nov 2021
     Purpose: Reviewed use of different types of input to generate an advanced search interface
-2.  Title: Forms Bootstrap
+3.  Title: Forms Bootstrap
     URL: https://getbootstrap.com/docs/4.1/components/forms/#checkboxes-and-radios
     Date Accessed: 27 Nov 2021
     Purpose: Referred to existing Bootstrap framework styling mechanisms for radio type inputs

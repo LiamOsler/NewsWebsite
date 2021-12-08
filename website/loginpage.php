@@ -1,117 +1,111 @@
-<?php include "inc/header.php" ?>
-
-<div class = "container">
-
 <?php
-    if(isset($_SESSION["userName"]))
-    {
-        echo "Hello ".  $_SESSION["userName"] . " " . $_SESSION["userID"];
-        echo "<br>";
-    }
-    else
-    {
-        echo "Hello";
-        echo "<br>";
-    }
+session_name('legalnews');
+session_start();
 
-    $usernameInput = sanitizeData($_POST["username"]);
-    $passwordInput = sanitizeData($_POST["password"]);
+include "db/db.php";
+include "db/functions.php"; 
 
-    echo "User Input:";
-    echo "<br>";
-    echo($usernameInput);
-    echo "<br>";
-    echo($passwordInput);
 
-    $querySQL = "   SELECT userName, userID, privateID from users 
-                    WHERE userName = '{$usernameInput}'";
-    $result = $dbconn->query($querySQL);
-    $rowcount = mysqli_num_rows($result); 
-    echo "<br>";
+//Sanitize the username and password input:
+$usernameInput = sanitizeData($_POST["username"]);
+$passwordInput = sanitizeData($_POST["password"]);
 
-    if($rowcount < 1){
-        echo("Username or Password Incorrect");
-    }  
-    else{
+//echo("userNameInput: ");
+//echo($usernameInput  );
+//echo("<br>");
+//echo("passwordInput: ");
+//echo($passwordInput );
+//echo("<br>");
+
+$passwordInput = md5($passwordInput);
+//Query the users table for the username that was inputted 
+$querySQL = "   SELECT userName, userID, privateID from users 
+                WHERE userName = '{$usernameInput}'";
+$result = $dbconn->query($querySQL);
+$rowcount = mysqli_num_rows($result); 
+
+//If the username isn't found no rows will be returned
+if($rowcount < 1){
+    //If no username found then Set the username or password incorrect value to TRUE
+    $incorrect = TRUE;
+}  
+else{
+    //Get the first result as the current item:
+    foreach($result as $current){
+        //Set the userID, userName and privateID to their own variables:
+        $userID = $current["userID"];
+        $username = $current["userName"];
+        $privateID = $current["privateID"];
+
+        //echo("userID: ");
+        //echo($userID );
+        //echo("<br>");
+        //echo("username: ");
+        //echo($username );
+        //echo("<br>");
+        //echo("privateID: ");
+        //echo($privateID );
+        //echo("<br>");
+        //Get the user's salt and peppers for password spicing:
+        $querySQL = "   SELECT privateID, userSalt, userPepper from userSaltAndPepper 
+                        WHERE privateID = '{$privateID}'";
+        $result = $dbconn->query($querySQL);
+        //Get the first result as the current item:
         foreach($result as $current){
-            $userID = $current["userID"];
-            $userName = $current["userName"];
-            $privateID = $current["privateID"];
-            echo "<br>";
-            echo("Username found, privateID " );
-            echo "<br>";
-            echo($userName . ", " . $privateID );
-            echo "<br>";
+            //Set the user's salt and peppers to their own variables:
+            $userSalt = $current["userSalt"];
+            $userPepper = $current["userPepper"] ;
 
-            //Get the user's salt and peppers for password spicing:
-            $querySQL = "   SELECT privateID, userSalt, userPepper from userSaltAndPepper 
+            //echo("Salt: ");
+            //echo( $userSalt); 
+            //echo("<br>");
+            //echo("Pepper: ");
+            //echo( $userPepper);
+            //echo("<br>");
+            //echo("Hashed Password Input: ");
+            //echo($passwordInput);
+            //echo("<br>");
+
+            //Conatenate the salt, password input and the pepper together
+            $saltAndPepperPasswordInput = $userSalt . $passwordInput . $userPepper;
+
+            //echo("Salt + Hash + Pepper: ");
+            //echo($saltAndPepperPasswordInput);
+            //echo("<br>");
+
+
+            //Get the MD5 checksum of $saltAndPepperPasswordInput and set it to a variable:
+            $saltAndPepperPasswordInputChecksum = md5($saltAndPepperPasswordInput);
+            //Get the user's hashed password (with salt and pepper) from the database:
+
+            echo($saltAndPepperPasswordInput);
+            
+            $querySQL = "   SELECT privateID, passwordHash from userHashes
                             WHERE privateID = '{$privateID}'";
             $result = $dbconn->query($querySQL);
-
             foreach($result as $current){
-                $userSalt = $current["userSalt"];
-                $userPepper = $current["userPepper"] ;
-                echo "<br>";
-                echo("privateID, userSalt, userPepper" );
-                echo "<br>";
-                echo($current["privateID"] . ", " . $current["userSalt"] . ", " . $current["userPepper"] );
-                
-                echo "<br>";
-                echo "<br>";
-                echo("Salted and peppered password input:" );
-                $saltAndPepperPasswordInput = $userSalt . $passwordInput . $userPepper;
-                echo "<br>";
-                echo($saltAndPepperPasswordInput);
-                
-                echo "<br>";
-                echo "<br>";
-                echo("MD5 checksum of salted and peppered input:" );
-                echo "<br>";
-                $saltAndPepperPasswordInputChecksum = md5($saltAndPepperPasswordInput);
-                echo($saltAndPepperPasswordInputChecksum);
-
-                //Get the user's password from the database:
-                $querySQL = "   SELECT privateID, passwordHash from userHashes
-                                WHERE privateID = '{$privateID}'";
-                $result = $dbconn->query($querySQL);
-                foreach($result as $current){
-                    $passwordHash = $current["passwordHash"];
-                    echo "<br>";
-                    echo "<br>";
-                    echo("Stored user hash:" );
-                    echo "<br>";
-                    echo($passwordHash);
-                }
-
+                //Set the user's hashed password to variable:
+                $passwordHash = $current["passwordHash"];
+                //echo($passwordHash);
             }
         }
-        echo "<br>";
-        echo "<br>";
-        echo("Parity Check:");
-        echo "<br>";
-        if($saltAndPepperPasswordInputChecksum == $passwordHash){
-            echo "Password is correct";
-            $_SESSION["userName"] = $userName;
-            $_SESSION["userID"] = $userID;
+    }
+    //Check if the hashed input matches the user's hashed password:
+    if($saltAndPepperPasswordInputChecksum == $passwordHash){
+        //If the password is correct, we can set the SESSION userName and userID values:
+        $_SESSION["userName"] = $username;
+        $_SESSION["userID"] = $userID;
 
-        }else{
-            echo "Username or Password Incorrect";
-        }
-    } 
+        //echo("hello");
+        header("Location: index.php");
+        die();
+    }else{
+        //If password incorrect then Set the username or password incorrect value to TRUE
+        $incorrect = TRUE;
+        
+    }
+}
+    if($incorrect){
+        header("Location: loginfailed.php");
+} 
 ?>    
-
-
-<main>
-    <div class = "container">
-
-
-
-    </div>
-</main>
-
-<script>
-</script>
-
-</div>
-
-<?php include "inc/footer.php" ?>

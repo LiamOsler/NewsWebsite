@@ -34,4 +34,6 @@
 <script>
 </script>
 
-<?php include "inc/footer.php" ?>
+<?php 
+echo($_SESSION['userName']);
+include "inc/footer.php" ?>

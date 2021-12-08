@@ -33,17 +33,16 @@
     /* OPTION TO FILL IN THE LOGGED IN USER'S ID AS THE CARD HEADER TO MATCH OTHER COMMENTS */
 ?>
   <div class="card bg-light mb-3">
-    <div class="card-header">New Comment</a></div>
-    <div class="card-body">
-      <form action="inc/components/postcomment.php" method="POST">
-        <div class="mb-3">
-          <label for="new-comment-text" class="form-label">Write a new comment</label>
-          <textarea class="form-control" rows="3" name="new-comment-text" id="new-comment-text" required></textarea>
-        </div>
-        <input type="text" name="comment-article-id" id="comment-article-id" value="2" hidden>
-        <button class="btn btn-info" type="submit" name="post-comment" action="inc/components/postcomment.php" method="POST">Post Comment</button>
-      </form>
-    </div>
+  <div class="card-header">New Comment</a></div>
+  <div class="card-body">
+    <form action="inc/components/postcomment.php" method="POST">
+      <div class="mb-3">
+        <label for="new-comment-text" class="form-label">Write a new comment</label>
+        <textarea class="form-control" rows="3" name="new-comment-text" id="new-comment-text" required></textarea>
+      </div>
+      <input type="text" name="comment-article-id" id="comment-article-id" value="<?php echo $articleID; ?>" hidden>
+      <button class="btn btn-info" type="submit" value="post-comment" action="postcomment.php" method="POST">Post Comment</button>
+    </form>
   </div>
 
 <?php

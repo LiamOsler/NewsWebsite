@@ -61,7 +61,7 @@
                 <label for="contact-msg">Message:</label>
                 <textarea class="form-control" id="contact-msg" placeholder="Enter your message here..." name="contact-msg" rows=5></textarea>
             </div>
-            <button class="btn btn-success btn-lg" name="contact-us" type="submit" >Submit Message</button>
+            <button class="btn btn-info btn-lg" name="contact-us" type="submit" >Submit Message</button>
         </form>
     </div>
 </main>

@@ -25,7 +25,7 @@
 
 - Milestone 2: Adam, Liam and Rachel all participated in the conceptual design of the website. Rachel compiled the design plan into the wireframes and annotated them, with feedback from Adam and Liam.
 
-- Milestone 3:
+- Milestone 3: Liam designed and set up the database and wrote the skeleton code for the website. Rachel implemented the contact form and comment posting features. Liam implemented the user login and user registration. Adam designed and wrote about.php and footer.php. Liam, Rachel and Adam all contributed to troubleshooting and polishing the website.
 ---
 
 ### Website goals: 

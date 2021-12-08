@@ -28,15 +28,15 @@
         <br>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="search-by" id="articleHeadline" value="articleHeadline" checked>
-            <label class="form-check-label" for="title">Search by Article Title</label>
+            <label class="form-check-label" for="articleHeadline">Search by Article Title</label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="search-by" id="authorName" value="authorName">
-            <label class="form-check-label" for="author">Search by Author Name</label>
+            <label class="form-check-label" for="authorName">Search by Author Name</label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="search-by" id="articleText" value="articleText">
-            <label class="form-check-label" for="content">Search by Article Content</label>
+            <label class="form-check-label" for="articleText">Search by Article Content</label>
         </div>
         <br>
     </form>

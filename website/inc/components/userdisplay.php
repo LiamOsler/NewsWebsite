@@ -27,8 +27,8 @@
                     <hr>
                     <h6 class="card-title">@<?php echo($user["userName"]);?></h6>
                     </div>
+                </a>
                 </div>
-            </a>
         </div>
 
 

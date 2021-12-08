@@ -485,3 +485,40 @@ FROM `userSaltAndPepper`;
     URL: https://getbootstrap.com/docs/4.1/components/forms/#checkboxes-and-radios
     Date Accessed: 27 Nov 2021
     Purpose: Referred to existing Bootstrap framework styling mechanisms for radio type inputs
+4.  Title: How To Create A Login System In PHP For Beginners | Procedural MySQLi | PHP Tutorial
+    URL: https://youtube.com/watch?v=gCo6JqGMi30&t=0s
+    Date Accessed: 05 Dec 2021
+    Purpose: Used some concepts such as prepared statements and error checking
+5.  Title: W3Schools PHP Sessions
+    URL: https://www.w3schools.com/php/php_sessions.asp
+    Date Accessed: 07 Dec 2021
+    Purpose: Review of PHP session variables
+6.  Title: W3Schools PHP MySQL Insert Multiple Records
+    URL: https://www.w3schools.com/php/php_mysql_insert_multiple.asp
+    Date Accessed: 04 Dec 2021
+    Purpose: Review of SQL INSERT statements
+7.  Title: Magic Pattern - CSS Backgroun Patterns
+    URL: https://www.magicpattern.design/tools/css-backgrounds
+    Date Accessed: 01 Dec 2021
+    Purpose: Checking out CSS sstyling possibilities 
+8.  Title: How To Submit AJAX Forms with JQuery
+    URL: https://www.digitalocean.com/community/tutorials/submitting-ajax-forms-with-jquery
+    Date Accessed: 27 Nov 2021
+    Purpose: Review AJAX form submission
+9.  Title: Github - LiamOsler/foodfeed
+    URL: https://github.com/LiamOsler/foodfeed
+    Date Accessed: 23 Nov 2021
+    Purpose: Referencing previous use of registration/login features.
+10. Title: Github - LiamOsler/Halifax-Housing-Hackathon
+    URL: https://github.com/LiamOsler/Halifax-Housing-Hackathon/tree/master
+    Date Accessed: 27 Nov 2021
+    Purpose: Referencing user registration features.
+11. Title: Password Hashing, Salts, Peppers | Explained!
+    URL: https://www.youtube.com/watch?v=--tnZMuoK3E&ab_channel=Seytonic
+    Date Accessed: 27 Nov 2021
+    Purpose: Reviewing Salt and Pepper hashing.
+12. Title: Hashing vs Encryption Differences
+    URL: https://www.youtube.com/watch?v=GI790E1JMgw&ab_channel=ProgrammingwithProfessorSluiter
+    Date Accessed: 27 Nov 2021
+    Purpose: Reviewing password authentication.
+    

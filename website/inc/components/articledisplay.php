@@ -36,7 +36,7 @@
   <div class="card bg-light mb-3">
   <div class="card-header">New Comment</a></div>
   <div class="card-body">
-    <form action="postcomment.php" method="POST">
+    <form action="inc/components/postcomment.php" method="POST">
       <div class="mb-3">
         <label for="new-comment-text" class="form-label">Write a new comment</label>
         <textarea class="form-control" rows="3" name="new-comment-text" id="new-comment-text" required></textarea>

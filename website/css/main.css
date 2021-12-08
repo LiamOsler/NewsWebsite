@@ -57,9 +57,15 @@ background: rgba(0, 0, 0, 0.2);
 .jumbotron p{
     color: white;
 }
+
 .card{
     margin-bottom: 1em;
 }
+
+.card:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
 .form-check-label {
     color: white;
 }
@@ -69,6 +75,29 @@ background: rgba(0, 0, 0, 0.2);
     width: 100%;
 }
 
-.card:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2); 
-  }
+.btn-success{
+    background-color: rgb(49, 210, 242)!important;
+    color: black !important;
+}
+
+.btn{
+    /* float: right; */
+}
+
+.btn-success a:hover{
+    color: white;
+}
+
+#profile-button, #login-button, #logout-button, #newuser-button{
+    margin-left: .5em !important;
+    float: right;
+}
+
+#logout-button:hover{
+    background-color: rgb(255, 183, 0);
+}
+
+#logout-button:active + a{ 
+    color: white;
+}
+

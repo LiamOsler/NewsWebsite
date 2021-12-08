@@ -1,6 +1,8 @@
 
-a{
-    color: #049ab8;
+/* General link styles for on a light background */
+
+a {
+    color: #0f7585;
 }
 
 a:hover{
@@ -11,6 +13,7 @@ a:active{
     color: #f00ddd;
 }
 
+/* Styling for modals to appear appropriately */
 
 body.modal{
   height: 100vh;
@@ -19,12 +22,14 @@ body.modal{
 
 body {
     overflow: overlay;
-  }
+}
+
+/* Navigation section styles */
 
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-  }
+}
 
 ::-webkit-scrollbar-thumb {
 background: rgba(90, 90, 90);
@@ -34,15 +39,17 @@ background: rgba(90, 90, 90);
 background: rgba(0, 0, 0, 0.2);
 }
 
-.nav-item{
+.nav-item {
     text-align: right;
 }
 
-.navbar-text{
+.navbar-text {
     float: right;
 }
 
-.jumbotron{
+/* Jumbotron styles */
+
+.jumbotron {
     background-color: #000000;
     opacity: 0.9;
     background-image:  linear-gradient(30deg, #101010 12%, transparent 12.5%, transparent 87%, #101010 87.5%, #101010), linear-gradient(150deg, #101010 12%, transparent 12.5%, transparent 87%, #101010 87.5%, #101010), linear-gradient(30deg, #101010 12%, transparent 12.5%, transparent 87%, #101010 87.5%, #101010), linear-gradient(150deg, #101010 12%, transparent 12.5%, transparent 87%, #101010 87.5%, #101010), linear-gradient(60deg, #10101077 25%, transparent 25.5%, transparent 75%, #10101077 75%, #10101077), linear-gradient(60deg, #10101077 25%, transparent 25.5%, transparent 75%, #10101077 75%, #10101077);
@@ -50,13 +57,14 @@ background: rgba(0, 0, 0, 0.2);
     background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 }
 
-.jumbotron h1{
+.jumbotron h1 {
     color: white;
 }
 
-.jumbotron p{
+.jumbotron p {
     color: white;
 }
+
 
 .card{
     margin-bottom: 1em;
@@ -66,14 +74,41 @@ background: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
+
+.jumbotron a {
+    color: #0dcaf0;
+}
+
+.jumbotron a:hover {
+    color: #8d0081;
+}
+
+.jumbotron a:active {
+    color: #f00ddd;
+}
+
+/* Overriding built-in Bootstrap styles for appropriate contrast and sizing */
+
+.btn a {
+    color: black;
+    text-decoration: none;
+}
+
+.btn-outline-secondary {
+    color: black;
+    border-color: black;
+}
+
+
 .form-check-label {
     color: white;
 }
 
-.user-grid{
+.user-grid {
     text-align: center;
     width: 100%;
 }
+
 
 .btn-success{
     background-color: rgb(49, 210, 242)!important;
@@ -99,5 +134,19 @@ background: rgba(0, 0, 0, 0.2);
 
 #logout-button:active + a{ 
     color: white;
+
+i {
+    font-size: 1em;
+}
+
+/* Card styles */
+
+.card {
+    margin-bottom: 1em;
+}
+
+.card:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+
 }
 

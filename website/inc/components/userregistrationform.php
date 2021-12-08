@@ -132,6 +132,6 @@ function showEmailResult(str) {
         </label>
         </div>
     </div>
-    <button class="btn btn-success btn-lg" type="submit">Create Account <i class="bi-person-plus" style="font-size: 1rem;"></i></button>
+    <button class="btn btn-info btn-lg" type="submit">Create Account <i class="bi-person-plus"></i></button>
 </form>
 

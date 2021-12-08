@@ -67,7 +67,7 @@ function showEmailResult(str) {
         </div>
         <div class="col-md-6 mb-6">
             <label for="validationPhone">Phone Number</label>
-            <input type="phone" class="form-control" name = "phone" id="validationPhone" placeholder="Phone Number" value="" required>
+            <input type="phone" class="form-control" name = "phone" id="validationPhone" placeholder="Phone Number" pattern="^([0-9]{3})-?\s?([0-9]{3})-?\s?([0-9]{4})$" value="" required>
         </div>
 
     </div>

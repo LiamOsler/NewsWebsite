@@ -15,7 +15,7 @@
 ### How to use our website:
 - Nova Scotia Legal News is a one-stop shop for court decisions and legal news articles. Recent rulings are pulled from the courts of Nova Scotia and presented to the public in a user friendly manner. We also host articles regarding Nova Scotia law, written by verified journalists and legal professionals.
 - Our website also allows users to interact with the law by creating accounts, commenting on decisions/articles, and being able to follow other users.
-- On our frontpage we present some recent rulings/articles, as well as a search bar to look for specific articles. We also have an advance 
+- On our frontpage we present some recent rulings/articles, as well as a search bar to look for specific articles. We also have an advance search feature that lets users search articles by title, author or contents.
 
 ---
 

@@ -61,8 +61,8 @@ include "db/functions.php";
     <?php
     if(isset($_SESSION["userName"])){
       ?>
-      <button  class="btn btn-outline-secondary btn-lg btn-lg"><a href="logout.php" style = "text-decoration: none">Logout <i class="bi-door-open" style="font-size: 1em"></i></i></a>  </button>  
-        <button  class="btn btn-success btn-lg"><a href="users.php?userID=<?php echo($_SESSION["userID"])?>" style = "text-decoration: none">My Profile <i class="bi-person-circle" style="font-size: 1em"></i></i></a>  </button>  
+      <button class="btn btn-outline-secondary btn-lg"><a href="logout.php">Logout <i class="bi-door-open" style="font-size: 1em"></i></i></a>  </button>  
+        <button class="btn btn-info btn-lg"><a href="users.php?userID=<?php echo($_SESSION["userID"])?>" style = "text-decoration: none">My Profile <i class="bi-person-circle" style="font-size: 1em"></i></i></a>  </button>  
       </span>
       <?php
     }

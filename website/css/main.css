@@ -79,6 +79,11 @@ background: rgba(0, 0, 0, 0.2);
 
 /* Overriding built-in Bootstrap styles for appropriate contrast */
 
+.btn a {
+    color: black;
+    text-decoration: none;
+}
+
 .btn-outline-secondary {
     color: black;
     border-color: black;

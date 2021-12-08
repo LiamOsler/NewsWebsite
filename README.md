@@ -83,7 +83,7 @@
 ## Sample Code:
 
 ### Registering users
-![User Registration Form](READMEimg/registration-1.png)
+![User Registration Form](READMEimg/registration1.png)
 
 ```php
 <?php
@@ -185,9 +185,9 @@ header("Location: index.php");
 ?>
 ```
 
-![User Registration Form](READMEimg/registration-2.png)
-![User Registration Form](READMEimg/registration-3.png)
-![User Registration Form](READMEimg/registration-4.png)
+![User Registration Form](READMEimg/registration2.png)
+![User Registration Form](READMEimg/registration3.png)
+![User Registration Form](READMEimg/registration4.png)
 
 ### Creating tables for the users, their salt and peppers:
 Three tables will be used for the login process, the users table, the userSaltAndPepper table and the userHashes table. The userHashes table contains the  

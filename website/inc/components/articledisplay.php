@@ -15,7 +15,7 @@
   <div class="container">
     <div class = "row">
       <div class = "col-md-12">
-        <br>
+      <br>
       <h1 class="display-4"><?php echo($article["articleHeadline"]); ?></h1>
       <p class="lead">Published By: <a href = "#"><?php echo($article["outletName"]); ?></a></p>
       <hr>
@@ -79,3 +79,7 @@
       ?>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> 35ace7e997e2b2f0249bfec8579a11b32fc782e3

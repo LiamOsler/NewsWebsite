@@ -30,19 +30,19 @@
 <?php
   // If the user is logged in, display form for submitting comments
   if(isset($_SESSION["userID"])) {
-    /* OPTION TO FILL IN THE LOGGED IN USER'S ID AS THE CARD HEADER TO MATCH OTHER COMMENTS */
 ?>
   <div class="card bg-light mb-3">
-  <div class="card-header">New Comment</a></div>
-  <div class="card-body">
-    <form action="inc/components/postcomment.php" method="POST">
-      <div class="mb-3">
-        <label for="new-comment-text" class="form-label">Write a new comment</label>
-        <textarea class="form-control" rows="3" name="new-comment-text" id="new-comment-text" required></textarea>
-      </div>
-      <input type="text" name="comment-article-id" id="comment-article-id" value="<?php echo $articleID; ?>" hidden>
-      <button class="btn btn-info" type="submit" value="post-comment" action="postcomment.php" method="POST">Post Comment</button>
-    </form>
+    <div class="card-header">New Comment</a></div>
+    <div class="card-body">
+      <form action="inc/components/postcomment.php" method="POST">
+        <div class="mb-3">
+          <label for="new-comment-text" class="form-label">Write a new comment</label>
+          <textarea class="form-control" rows="3" name="new-comment-text" id="new-comment-text" required></textarea>
+        </div>
+        <input type="text" name="comment-article-id" id="comment-article-id" value="<?php echo $articleID; ?>" hidden>
+        <button class="btn btn-info" type="submit" name="post-comment" action="postcomment.php" method="POST">Post Comment</button>
+      </form>
+    </div>
   </div>
 
 <?php
@@ -66,9 +66,8 @@
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </div>
-</div>
-<h2></h2>
 
 <?php
 }
 ?>
+</div>

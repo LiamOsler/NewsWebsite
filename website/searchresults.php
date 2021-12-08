@@ -1,8 +1,8 @@
 <?php include "inc/header.php" ?>
 <?php include "inc/components/advsearch.php" ?>
 
-<main>
-    <div class = "container">
+<main class="container">
+    <div class="row">
     <h1>Search Results</h1>
 
 <?php

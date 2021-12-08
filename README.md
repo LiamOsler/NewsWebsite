@@ -71,26 +71,46 @@
 ### Website file structure:
 ```
 website
+├── about.php
+├── article.php
+├── css
+│   ├── main.css
+│   └── normalize.css
 ├── db
 │   ├── db.php
 │   └── functions.php
+├── files
+│   └── CSCI2170-SpiderMan4-Wireframes.pdf
+├── img
 ├── inc
 │   ├── components
+│   │   ├── advsearch.php
 │   │   ├── articledisplay.php
+│   │   ├── checkuseremail.php
+│   │   ├── checkusername.php
 │   │   ├── latestnews.php
-│   │   ├── login.php
+│   │   ├── legislation.php
+│   │   ├── loginform.php
+│   │   ├── loginmodal.php
+│   │   ├── news-opinion.php
+│   │   ├── postcomment.php
+│   │   ├── rulings.php
 │   │   ├── searcharea.php
-│   │   └── userdisplay.php
+│   │   ├── userdisplay.php
+│   │   └── userregistrationform.php
 │   ├── footer.php
-│   └── header.php
-├── styles
-│   └── main.css
-├── about.php
-├── article.php
+│   ├── header.php
+│   └── header.php.orig
 ├── index.php
+├── js
+│   └── scripts.js
+├── loginfailed.php
 ├── loginpage.php
-├── newuser.php
+├── logout.php
+├── planning
+├── searchresults.php
 ├── test.php
+├── userregistration.php
 └── users.php
 ```
 
@@ -101,7 +121,7 @@ website
 ## Sample Code:
 
 ### Registering users
-```
+```php
 <?php
 include "db/db.php";
 include "db/functions.php"; 

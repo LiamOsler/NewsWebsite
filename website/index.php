@@ -10,10 +10,7 @@
             }
             // Otherwise, check the value of the query string and display content accordingly
             else {
-                if ($_GET["show"] == "about") {
-                    include "inc/components/about.php";
-                }
-                else if ($_GET["show"] == "rulings") {
+                if ($_GET["show"] == "rulings") {
                     include "inc/components/rulings.php";
                 }
                 else if ($_GET["show"] == "legislation") {

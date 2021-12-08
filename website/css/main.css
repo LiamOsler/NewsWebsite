@@ -64,16 +64,6 @@ background: rgba(0, 0, 0, 0.2);
     color: white;
 }
 
-
-.card{
-    margin-bottom: 1em;
-}
-
-.card:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2); 
-}
-
-
 .jumbotron a {
     color: #0dcaf0;
 }
@@ -122,6 +112,8 @@ background: rgba(0, 0, 0, 0.2);
     color: white;
 }
 
+/* Button styles */
+
 #profile-button, #login-button, #logout-button, #newuser-button{
     margin-left: .5em !important;
     float: right;
@@ -135,7 +127,6 @@ background: rgba(0, 0, 0, 0.2);
     color: white;
 }
 
-
 /* Card styles */
 
 .card {
@@ -144,4 +135,18 @@ background: rgba(0, 0, 0, 0.2);
 
 .card:hover {
     box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.card{
+    margin-bottom: 1em;
+}
+
+.card:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+/* Custom message stylings */
+.message {
+    color: #0f7585;
+    font-weight: bold;
 }

@@ -62,8 +62,8 @@
   }
   // Display comments regardless of login status
   $querySQL = "   SELECT commentID, commentText, userName, users.userID as commenterID FROM articleComments
-                  JOIN articles ON articleComments.articleID = articles.articleID
-                  JOIN users ON articleComments.userID = users.userID 
+                  JOIN articles ON articlecomments.articleID = articles.articleID
+                  JOIN users ON articlecomments.userID = users.userID 
                   AND articles.articleID = {$articleID}";
 
   $result = $dbconn->query($querySQL);

@@ -4,10 +4,10 @@
 
 
     <?php
-        $querySQL = "   SELECT articles.articleID, articleText, articleCommentCount, authorName, outletName, articleHeadline FROM articles
+        $querySQL = "   SELECT articles.articleID, articletext, articlecommentcount, authorname, outletname, articleheadline FROM articles
                         JOIN outlets ON articles.outletID = outlets.outletID
                         LEFT JOIN (
-                        SELECT articleID, COUNT(DISTINCT(commentID)) AS articleCommentCount
+                        SELECT articleID, COUNT(DISTINCT(commentID)) AS articlecommentcount
                         FROM articlecomments
                         GROUP BY articleID) articlecomments on articles.articleID = articlecomments.articleID
                         ORDER BY articles.articleID DESC;";
@@ -19,16 +19,16 @@
             <div class="card bg-light mb-3">
                 <div class="card-header"> 
                     <a href = "article.php?articleID=<?php echo($article["articleID"])?>">
-                        <h5 class="card-title"><?php echo($article["articleHeadline"])?></h5>
+                        <h5 class="card-title"><?php echo($article["articleheadline"])?></h5>
                     </a><?php echo($article["authorName"])?></div>
                     <div class="card-body">
                     
-                        <p class="card-text"><?php echo($article["articleText"])?></p>
+                        <p class="card-text"><?php echo($article["articletext"])?></p>
 
                         <a href= "article.php?articleID=<?php echo($article["articleID"])?>">
                             <?php
-                                if($article["articleCommentCount"]){
-                                    echo($article["articleCommentCount"] . " comments");
+                                if($article["articlecommentcount"]){
+                                    echo($article["articlecommentcount"] . " comments");
                                 }else{
                                     echo("0 comments");
                                 }

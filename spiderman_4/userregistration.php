@@ -65,13 +65,13 @@ if($registrationValid == TRUE){
         $_SESSION["userID"] = $current["userID"];
 
         $privateID = $current["privateID"];
-        $querySQL = "   INSERT INTO `userSaltAndPepper` VALUES 
+        $querySQL = "   INSERT INTO `usersaltandpepper` VALUES 
                         ('{$privateID}', LEFT(MD5(UUID()), 8), LEFT(MD5(UUID()), 8))
                     ";
         $dbconn->query($querySQL);
 
         $querySQL = "   SELECT `userSalt`, `userPepper`, `privateID`
-                        FROM userSaltAndPepper
+                        FROM usersaltandpepper
                         WHERE `privateID` = '{$privateID}'";
         $saltresult = $dbconn->query($querySQL);
 
@@ -79,7 +79,7 @@ if($registrationValid == TRUE){
             $userSalt = $saltcurrent["userSalt"];
             $userPepper = $saltcurrent["userPepper"]; 
             
-            $querySQL = "   INSERT INTO `userHashes` VALUES
+            $querySQL = "   INSERT INTO `userhashes` VALUES
                             ('{$privateID}', MD5(CONCAT('{$userSalt}', MD5('{$password}'), '{$userPepper}')))
                             ";
                         

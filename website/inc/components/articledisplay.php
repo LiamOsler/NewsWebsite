@@ -51,7 +51,7 @@
 </div>
 
 <?php
-  }
+  } else {
   // Notify user that they need to log in to post comments
   ?>
   <div class="message lead">
@@ -59,6 +59,7 @@
   </div>
 
   <?php
+  }
   // Display comments regardless of login status
   $querySQL = "   SELECT commentID, commentText, userName, users.userID as commenterID FROM articleComments
                   JOIN articles ON articleComments.articleID = articles.articleID

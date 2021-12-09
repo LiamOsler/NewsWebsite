@@ -18,11 +18,11 @@ Adam:
 - https://web.cs.dal.ca/~amelvin/project_SpiderMan4/
 
 Liam:   
-- https://web.cs.dal.ca/~osler/csci2170/project/spiderman_4
+- https://web.cs.dal.ca/~osler/csci2170/project/
 - http://www.liamosler.ca/projects/legalnews
 
 Rachel: 
-- https://web.cs.dal.ca/~rwoodside/2170-GP
+- https://web.cs.dal.ca/~rwoodside/
 
 
 

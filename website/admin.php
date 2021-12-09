@@ -28,7 +28,8 @@
         </div>
     </div>
 
-    <div class ="row container">
+    <div class ="container adminpage">
+        <div class ="row">
         <h1>Article List</h1>
         <?php
             $querySQL = "   SELECT articles.articleID, articleText, articleCommentCount, authorName, outletName, articleHeadline FROM articles
@@ -62,6 +63,8 @@
             } //Close foreach($result as $article)
         ?>
     </div> 
+
+    </div>
 </main>
 
 <?php include "inc/footer.php" ?>

@@ -178,3 +178,7 @@ main{
 .loginfailed{
     text-align: center;
 }
+
+.adminpage{
+    min-height: 70vh;
+}

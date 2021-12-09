@@ -54,8 +54,8 @@
   } else {
   // Notify user that they need to log in to post comments
   ?>
-  <div class="message lead">
-    <p>Please log in to post comments.</p>
+  <div class="lead">
+    <p>Please <a href= "#" onclick = "openLoginModal()">log in</a> to post comments.</p>
   </div>
 
   <?php

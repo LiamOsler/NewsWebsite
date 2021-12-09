@@ -20,7 +20,7 @@
                 <div class="card-header"> 
                     <a href = "article.php?articleID=<?php echo($article["articleID"])?>">
                         <h5 class="card-title"><?php echo($article["articleheadline"])?></h5>
-                    </a><?php echo($article["authorName"])?></div>
+                    </a><?php echo($article["authorname"])?></div>
                     <div class="card-body">
                     
                         <p class="card-text"><?php echo($article["articletext"])?></p>

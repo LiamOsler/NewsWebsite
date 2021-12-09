@@ -4,12 +4,8 @@
 
 
     <?php
-        $querySQL = "   SELECT articles.articleID, articleText, articleCommentCount, articleReactionCount, authorName, outletName, articleHeadline FROM articles
+        $querySQL = "   SELECT articles.articleID, articleText, articleCommentCount, authorName, outletName, articleHeadline FROM articles
                         JOIN outlets ON articles.outletID = outlets.outletID
-                        LEFT JOIN (
-                        SELECT articleID, COUNT(DISTINCT(reactionID)) AS articleReactionCount
-                        FROM articlereactions
-                        GROUP BY articleID) articlereactions on articles.articleID = articlereactions.articleID
                         LEFT JOIN (
                         SELECT articleID, COUNT(DISTINCT(commentID)) AS articleCommentCount
                         FROM articlecomments
@@ -30,8 +26,7 @@
                         <p class="card-text"><?php echo($article["articleText"])?></p>
 
                         <a href= "article.php?articleID=<?php echo($article["articleID"])?>">
-                            <?php 
-
+                            <?php
                                 if($article["articleCommentCount"]){
                                     echo($article["articleCommentCount"] . " comments");
                                 }else{
@@ -39,7 +34,6 @@
                                 }
                             ?>
                         </a>
-
                     </div>
             </div>
         </div>

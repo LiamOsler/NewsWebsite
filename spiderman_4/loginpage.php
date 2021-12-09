@@ -47,7 +47,7 @@ else{
         //echo($privateID );
         //echo("<br>");
         //Get the user's salt and peppers for password spicing:
-        $querySQL = "   SELECT privateID, userSalt, userPepper from userSaltAndPepper 
+        $querySQL = "   SELECT privateID, userSalt, userPepper from usersaltandpepper 
                         WHERE privateID = '{$privateID}'";
         $result = $dbconn->query($querySQL);
         //Get the first result as the current item:
@@ -80,7 +80,7 @@ else{
 
             echo($saltAndPepperPasswordInput);
             
-            $querySQL = "   SELECT privateID, passwordHash from userHashes
+            $querySQL = "   SELECT privateID, passwordHash from userhashes
                             WHERE privateID = '{$privateID}'";
             $result = $dbconn->query($querySQL);
             while ($current = $result->fetch_assoc()){

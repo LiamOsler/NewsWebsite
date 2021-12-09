@@ -111,10 +111,10 @@
     
             <ul class="list-group list-group-flush">
                 <?php
-                    $querySQL = "   SELECT userFollower.userName as userFollowerName, userFollows.userName as userFollowsName, userFollower.userID as followsID  FROM usersFollowsUsers
-                                    JOIN users userFollower ON userFollower.userID = usersFollowsUsers.userID
-                                    JOIN users userFollows ON userFollows.userID = usersFollowsUsers.followID
-                                    AND userFollows.userID = {$userID}";
+                    $querySQL = "   SELECT userfollower.username as userfollowername, userfollows.username as userfollowsname, userfollower.userID as followsID  FROM usersfollowsusers
+                                    JOIN users userfollower ON userfollower.userID = usersfollowsusers.userID
+                                    JOIN users userfollows ON userfollows.userID = usersfollowsusers.followID
+                                    AND userfollows.userID = {$userID}";
                     $result = $dbconn->query($querySQL);
 
                     while ($userFollowers = $result->fetch_assoc()){
@@ -136,10 +136,10 @@
     
             <ul class="list-group list-group-flush">
                 <?php
-                    $querySQL = "   SELECT userFollower.userName as userFollowerName, userFollows.userName as userFollowsName, userFollows.userID as followerID  FROM usersFollowsUsers
-                                    JOIN users userFollower ON userFollower.userID = usersFollowsUsers.userID
-                                    AND userFollower.userID = {$userID}
-                                    JOIN users userFollows ON userFollows.userID = usersFollowsUsers.followID";
+                    $querySQL = "   SELECT userFollower.username as userfollowername, userfollows.username as userfollowsname, userfollows.userID as followerID  FROM usersfollowsusers
+                                    JOIN users userfollower ON userfollower.userID = usersfollowsusers.userID
+                                    AND userfollower.userID = {$userID}
+                                    JOIN users userfollows ON userfollows.userID = usersfollowsusers.followID";
                     $result = $dbconn->query($querySQL);
 
                     while ($userFollowers = $result->fetch_assoc()){

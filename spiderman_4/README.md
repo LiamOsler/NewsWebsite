@@ -119,7 +119,7 @@ if (strlen($email)>0) {
                     WHERE `emailAddress` = '{$email}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -137,7 +137,7 @@ if (strlen($username)>0) {
                     WHERE `userName` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -166,7 +166,7 @@ if($registrationValid == TRUE){
                     WHERE `userName` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $_SESSION["userID"] = $current["userID"];
 
         $privateID = $current["privateID"];
@@ -180,7 +180,7 @@ if($registrationValid == TRUE){
                         WHERE `privateID` = '{$privateID}'";
         $saltresult = $dbconn->query($querySQL);
 
-        foreach($saltresult as $saltcurrent){
+        while ($saltcurrent = $saltresult->fetch_assoc()){
             $userSalt = $saltcurrent["userSalt"];
             $userPepper = $saltcurrent["userPepper"]; 
             
@@ -227,7 +227,7 @@ if (strlen($email)>0) {
                     WHERE `emailAddress` = '{$email}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -257,7 +257,7 @@ if (strlen($username)>0) {
                     WHERE `userName` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -361,7 +361,7 @@ FROM `userSaltAndPepper`;
         echo("Username or Password Incorrect");
     }  
     else{
-        foreach($result as $current){
+        while ($current = $result->fetch_assoc()){
             $privateID = $current["privateID"];
             echo "<br>";
             echo("Username found, privateID " );
@@ -374,7 +374,7 @@ FROM `userSaltAndPepper`;
                             WHERE privateID = '{$privateID}'";
             $result = $dbconn->query($querySQL);
 
-            foreach($result as $current){
+            while ($current = $result->fetch_assoc()){
                 $userSalt = $current["userSalt"];
                 $userPepper = $current["userPepper"] ;
                 echo "<br>";
@@ -400,7 +400,7 @@ FROM `userSaltAndPepper`;
                 $querySQL = "   SELECT privateID, passwordHash from userHashes
                                 WHERE privateID = '{$privateID}'";
                 $result = $dbconn->query($querySQL);
-                foreach($result as $current){
+                while ($current = $result->fetch_assoc()){
                     $passwordHash = $current["passwordHash"];
                     echo "<br>";
                     echo "<br>";
@@ -457,7 +457,7 @@ FROM `userSaltAndPepper`;
     }  
     else{
         //Get the first result as the current item:
-        foreach($result as $current){
+        while ($current = $result->fetch_assoc()){
             //Set the userID, userName and privateID to their own variables:
             $userID = $current["userID"];
             $userName = $current["userName"];
@@ -468,7 +468,7 @@ FROM `userSaltAndPepper`;
             $result = $dbconn->query($querySQL);
 
             //Get the first result as the current item:
-            foreach($result as $current){
+            while ($current = $result->fetch_assoc()){
                 //Set the user's salt and peppers to their own variables:
                 $userSalt = $current["userSalt"];
                 $userPepper = $current["userPepper"] ;
@@ -481,7 +481,7 @@ FROM `userSaltAndPepper`;
                 $querySQL = "   SELECT privateID, passwordHash from userHashes
                                 WHERE privateID = '{$privateID}'";
                 $result = $dbconn->query($querySQL);
-                foreach($result as $current){
+                while ($current = $result->fetch_assoc()){
                     //Set the user's hashed password to variable:
                     $passwordHash = $current["passwordHash"];
                 }

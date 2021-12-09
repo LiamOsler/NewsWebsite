@@ -13,9 +13,9 @@ $username = sanitizeData($_GET["username"]);
 $resultCount = 0;
 //lookup all links from the xml file if length of q>0
 if (strlen($username)>0) {
-    $querySQL = "   SELECT userName, userID 
+    $querySQL = "   SELECT username, userID 
                     FROM users
-                    WHERE `userName` = '{$username}'";
+                    WHERE `username` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
     while ($current = $result->fetch_assoc()){

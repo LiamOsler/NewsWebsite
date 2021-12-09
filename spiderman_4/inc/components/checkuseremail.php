@@ -12,9 +12,9 @@ $resultCount = 0;
 
 //If the query is not empty:
 if (strlen($email)>0) {
-    $querySQL = "   SELECT `emailAddress`
+    $querySQL = "   SELECT `emailaddress`
                     FROM `users`
-                    WHERE `emailAddress` = '{$email}'";
+                    WHERE `emailaddress` = '{$email}'";
     $result = $dbconn->query($querySQL);
 
     while ($current = $result->fetch_assoc()){

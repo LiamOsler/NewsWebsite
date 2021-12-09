@@ -18,7 +18,7 @@ if (strlen($username)>0) {
                     WHERE `userName` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 

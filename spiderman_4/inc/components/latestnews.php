@@ -13,7 +13,7 @@
                         ORDER BY articles.articleID DESC;";
         $result = $dbconn->query($querySQL);
 
-        foreach($result as $article){
+        while($article = $result->fetch_assoc()){
         ?>
         <div class="col-md-6">
             <div class="card bg-light mb-3">
@@ -40,7 +40,7 @@
         
 
     <?php
-        } //Close foreach($result as $article)
+        } //Close while($result as $article)
     ?>
 
 

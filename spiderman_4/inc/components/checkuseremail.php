@@ -17,7 +17,7 @@ if (strlen($email)>0) {
                     WHERE `emailAddress` = '{$email}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }

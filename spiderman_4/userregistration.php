@@ -15,7 +15,7 @@ if (strlen($email)>0) {
                     WHERE `emailAddress` = '{$email}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -33,7 +33,7 @@ if (strlen($username)>0) {
                     WHERE `userName` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -61,7 +61,7 @@ if($registrationValid == TRUE){
                     WHERE `userName` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $_SESSION["userID"] = $current["userID"];
 
         $privateID = $current["privateID"];
@@ -75,7 +75,7 @@ if($registrationValid == TRUE){
                         WHERE `privateID` = '{$privateID}'";
         $saltresult = $dbconn->query($querySQL);
 
-        foreach($saltresult as $saltcurrent){
+        while ($saltcurrent = $saltresult->fetch_assoc()){
             $userSalt = $saltcurrent["userSalt"];
             $userPepper = $saltcurrent["userPepper"]; 
             

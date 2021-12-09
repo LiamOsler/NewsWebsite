@@ -53,7 +53,7 @@
             echo "<p>This search returned no results.</p>";
         }
         else { 
-            foreach($results as $article){
+            while ($article = $results->fetch_assoc()){
             ?>
             <div class="col-md-6">
                 <div class="card bg-light mb-3">
@@ -86,7 +86,7 @@
             
 
 <?php
-            } //Close foreach($result as $article)
+            } //Close while ($result as $article)
         } // Close else check for query returning results
     } // Close if check for search-text being set
 ?>

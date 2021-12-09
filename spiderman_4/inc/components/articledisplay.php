@@ -9,7 +9,7 @@
                   AND articles.articleID = {$articleID}";
 
   $result = $dbconn->query($querySQL);
-  foreach($result as $article){
+  while($article = $result->fetch_assoc()){
 ?>
   <!--Edited by Adam Melvin - B00597004-->
   <div class="container">
@@ -69,7 +69,7 @@
   $result = $dbconn->query($querySQL);
   $resultCount = 0;
 
-  foreach($result as $comment){
+  while ($comment = $result->fetch_assoc()){
     $resultCount++;
       ?>
         <div class = "col-lg-12">

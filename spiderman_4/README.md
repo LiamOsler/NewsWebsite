@@ -1,7 +1,7 @@
 ### Nova Scotia Court News Website
 
 #### Early concept homepage design:
-<img src="READMEimg/concept1.png" height="400">
+<img src="img/READMEimg//concept1.png" height="400">
 
 --- 
 
@@ -11,6 +11,22 @@
 - Liam Osler 
 - Rachel Woodside
 ---
+
+### Submission URLs:
+
+Adam:   
+- https://web.cs.dal.ca/~amelvin/project_SpiderMan4/
+
+Liam:   
+- https://web.cs.dal.ca/~osler/csci2170/project/spiderman_4
+- http://www.liamosler.ca/projects/legalnews
+
+Rachel: 
+- https://web.cs.dal.ca/~rwoodside/2170-GP
+
+
+
+
 
 ### How to use our website:
 - Nova Scotia Legal News is a one-stop shop for court decisions and legal news articles. Recent rulings are pulled from the courts of Nova Scotia and presented to the public in a user friendly manner. We also host articles regarding Nova Scotia law, written by verified journalists and legal professionals.
@@ -77,13 +93,13 @@
 
 
 ### Database Schema:
-![Image of Schema](READMEimg/dbschema-2.png)
+![Image of Schema](img/READMEimg//dbschema-2.png)
 
 
 ## Sample Code:
 
 ### Registering users
-![User Registration Form](READMEimg/registration1.png)
+![User Registration Form](img/READMEimg//registration1.png)
 
 ```php
 <?php
@@ -171,8 +187,7 @@ if($registrationValid == TRUE){
             $querySQL = "   INSERT INTO `userHashes` VALUES
                             ('{$privateID}', MD5(CONCAT('{$userSalt}', MD5('{$password}'), '{$userPepper}')))
                             ";
-                        
-
+                    
             $_SESSION["userName"] = $username;
 
             $dbconn->query($querySQL);
@@ -185,7 +200,7 @@ header("Location: index.php");
 ?>
 ```
 ### Checking that inputs conform to standards:
-![User Registration Form](READMEimg/registration3.png)
+![User Registration Form](img/READMEimg//registration3.png)
 
 ```php
     <div class="col-md-6 mb-6">
@@ -195,7 +210,7 @@ header("Location: index.php");
 ```
 
 ### Validating emails are unique:
-![User Registration Form](READMEimg/registration2.png)
+![User Registration Form](img/READMEimg//registration2.png)
 ```php
 <?php
 $xmlDoc=new DOMDocument();
@@ -226,7 +241,7 @@ else{
 ```
 
 ### Checking that usernames are unique:
-![User Registration Form](READMEimg/registration4.png)
+![User Registration Form](img/READMEimg//registration4.png)
 ```php
 
 <?php
@@ -322,7 +337,7 @@ FROM `userSaltAndPepper`;
 ```
 
 ### User enters their password in the login modal:
-![Image of login salt, pepper and hashing](READMEimg/login-2.png)
+![Image of login salt, pepper and hashing](img/READMEimg//login-2.png)
 
 ### Password input check salting routine (with print output) in PHP:
 ```php
@@ -410,9 +425,9 @@ FROM `userSaltAndPepper`;
 ```
 
 ### The output of the code above when the password is correct:
-![Image of login salt, pepper and hashing](READMEimg/login-3.png)
+![Image of login salt, pepper and hashing](img/READMEimg//login-3.png)
 ### The output of the code above when the password is incorrect:
-![Image of login salt, pepper and hashing](READMEimg/login-4.png)
+![Image of login salt, pepper and hashing](img/READMEimg//login-4.png)
 ### Explanation:
 1. The user's input is displayed (as shown in the figure above, "Art" is the username and "password" is the password)
 2. The database is queried for the username, and if it is found the username and the user's privateID are displayed. If the username is not found the string "Username or Password Incorrect" is displayed.
@@ -494,7 +509,7 @@ FROM `userSaltAndPepper`;
 ?>    
 ```
 ### When the user logs in successfully, the text in the login button is replaced with "My Profile" and an option to "Logout" is shown with an open door icon: 
-![Image of login salt, pepper and hashing](READMEimg/login-5.png)
+![Image of login salt, pepper and hashing](img/READMEimg//login-5.png)
 
 ### Citations
 1.  Title: UXPin 

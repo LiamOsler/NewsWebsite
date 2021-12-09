@@ -40,3 +40,7 @@ function showUserResult(str) {
     xmlhttp.send();
   }
   
+  //Functions for calling modals (should be refactored):
+function openLoginModal(){
+  $('#loginModal').modal('toggle');
+}

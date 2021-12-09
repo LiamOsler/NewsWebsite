@@ -25,7 +25,7 @@
 
 - Milestone 2: Adam, Liam and Rachel all participated in the conceptual design of the website. Rachel compiled the design plan into the wireframes and annotated them, with feedback from Adam and Liam.
 
-- Milestone 3:
+- Milestone 3: Liam designed and set up the database and wrote the skeleton code for the website. Rachel implemented the contact form and comment posting features. Liam implemented the user login and user registration. Adam designed and wrote about.php and footer.php. Liam, Rachel and Adam all contributed to troubleshooting and polishing the website.
 ---
 
 ### Website goals: 
@@ -74,52 +74,7 @@
 - Libraries:
     - [Bootstrap 4.0](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 
-    
-### Website file structure:
-```
-website
-├── about.php
-├── article.php
-├── css
-│   ├── main.css
-│   └── normalize.css
-├── db
-│   ├── db.php
-│   └── functions.php
-├── files
-│   └── CSCI2170-SpiderMan4-Wireframes.pdf
-├── img
-├── inc
-│   ├── components
-│   │   ├── advsearch.php
-│   │   ├── articledisplay.php
-│   │   ├── checkuseremail.php
-│   │   ├── checkusername.php
-│   │   ├── latestnews.php
-│   │   ├── legislation.php
-│   │   ├── loginform.php
-│   │   ├── loginmodal.php
-│   │   ├── news-opinion.php
-│   │   ├── postcomment.php
-│   │   ├── rulings.php
-│   │   ├── searcharea.php
-│   │   ├── userdisplay.php
-│   │   └── userregistrationform.php
-│   ├── footer.php
-│   ├── header.php
-│   └── header.php.orig
-├── index.php
-├── js
-│   └── scripts.js
-├── loginfailed.php
-├── loginpage.php
-├── logout.php
-├── planning
-├── searchresults.php
-├── test.php
-├── userregistration.php
-└── users.php
-```
+
 
 ### Database Schema:
 ![Image of Schema](READMEimg/dbschema-2.png)
@@ -128,6 +83,8 @@ website
 ## Sample Code:
 
 ### Registering users
+![User Registration Form](READMEimg/registration1.png)
+
 ```php
 <?php
 include "db/db.php";
@@ -224,13 +181,81 @@ if($registrationValid == TRUE){
     }
 
 }
-
 header("Location: index.php");
+?>
+```
+### Checking that inputs conform to standards:
+![User Registration Form](READMEimg/registration3.png)
 
+```php
+    <div class="col-md-6 mb-6">
+        <label for="validationPhone">Phone Number</label>
+        <input type="phone" class="form-control" name = "phone" id="validationPhone" placeholder="Phone Number" pattern="^([0-9]{3})-?\s?([0-9]{3})-?\s?([0-9]{4})$" value="" required>
+    </div>
+```
+
+### Validating emails are unique:
+![User Registration Form](READMEimg/registration2.png)
+```php
+<?php
+$xmlDoc=new DOMDocument();
+$x=$xmlDoc->getElementsByTagName('link');
+
+//get the q parameter from URL
+$email = sanitizeData($_GET["email"]);
+$resultCount = 0;
+
+//If the query is not empty:
+if (strlen($email)>0) {
+    $querySQL = "   SELECT `emailAddress`
+                    FROM `users`
+                    WHERE `emailAddress` = '{$email}'";
+    $result = $dbconn->query($querySQL);
+
+    foreach($result as $current){
+        $resultCount+=1;
+    }
+}
+if($resultCount > 0){
+    echo "Email is already taken";
+}
+else{
+    echo "Email is valid";
+}
 ?>
 ```
 
-### Creating tables for the users, their salt and peppers:
+### Checking that usernames are unique:
+![User Registration Form](READMEimg/registration4.png)
+```php
+
+<?php
+$xmlDoc=new DOMDocument();
+$x=$xmlDoc->getElementsByTagName('link');
+
+$username = sanitizeData($_GET["username"]);
+$resultCount = 0;
+
+if (strlen($username)>0) {
+    $querySQL = "   SELECT userName, userID 
+                    FROM users
+                    WHERE `userName` = '{$username}'";
+    $result = $dbconn->query($querySQL);
+
+    foreach($result as $current){
+        $resultCount+=1;
+    }
+}
+if($resultCount > 0){
+    echo "Username is already taken";
+}
+else{
+    echo "Username is valid";
+}
+?>
+```
+
+### Creating test users in MySQL:
 Three tables will be used for the login process, the users table, the userSaltAndPepper table and the userHashes table. The userHashes table contains the  
 ```sql
 CREATE TABLE users (

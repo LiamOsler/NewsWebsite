@@ -127,8 +127,7 @@ function showEmailResult(str) {
     <div class="form-group">
         <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
-        <label class="form-check-label" for="termsCheck">
-            Agree to terms and conditions
+        <label for="termsCheck">Agree to terms and conditions
         </label>
         </div>
     </div>

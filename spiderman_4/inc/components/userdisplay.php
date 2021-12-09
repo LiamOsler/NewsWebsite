@@ -14,7 +14,7 @@
             $result = $dbconn->query($querySQL);
 
             //Print the user's information on the page:
-            foreach($result as $user){
+            while ($user = $result->fetch_assoc()){
         ?>
         
         <div class = "col-lg-2 col-md-3 col-sm-4 col-4 d-flex align-items-stretch">
@@ -56,7 +56,7 @@
             $result = $dbconn->query($querySQL);
 
         //Print the user's information on the page:
-        foreach($result as $user){
+        while ($user = $result->fetch_assoc()){
     ?>
         <div class = "col-lg-6">
             <div class="card text-center">
@@ -117,7 +117,7 @@
                                     AND userFollows.userID = {$userID}";
                     $result = $dbconn->query($querySQL);
 
-                    foreach($result as $userFollowers){
+                    while ($userFollowers = $result->fetch_assoc()){
                 ?>
             <li class="list-group-item"> <a href = "users.php?userID=<?php echo($userFollowers["followsID"]);?>">@<?php echo($userFollowers["userFollowerName"]);?></a></li>
 
@@ -142,7 +142,7 @@
                                     JOIN users userFollows ON userFollows.userID = usersFollowsUsers.followID";
                     $result = $dbconn->query($querySQL);
 
-                    foreach($result as $userFollowers){
+                    while ($userFollowers = $result->fetch_assoc()){
                 ?>
             <li class="list-group-item"><a href = "users.php?userID=<?php echo($userFollowers["followerID"]);?>">@<?php echo($userFollowers["userFollowsName"]);?></a></li>
 

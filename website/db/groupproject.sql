@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 08, 2021 at 03:01 AM
+-- Generation Time: Dec 09, 2021 at 01:14 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `groupproject`
 --
+CREATE DATABASE IF NOT EXISTS `groupproject` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `groupproject`;
 
 -- --------------------------------------------------------
 
@@ -28,6 +30,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrators`
 --
 
+DROP TABLE IF EXISTS `administrators`;
 CREATE TABLE `administrators` (
   `adminID` int(11) NOT NULL,
   `userID` int(11) DEFAULT NULL
@@ -46,6 +49,7 @@ INSERT INTO `administrators` (`adminID`, `userID`) VALUES
 -- Table structure for table `articlecomments`
 --
 
+DROP TABLE IF EXISTS `articlecomments`;
 CREATE TABLE `articlecomments` (
   `commentID` int(11) NOT NULL,
   `commentText` varchar(1024) DEFAULT NULL,
@@ -68,34 +72,10 @@ INSERT INTO `articlecomments` (`commentID`, `commentText`, `userID`, `articleID`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `articlereactions`
---
-
-CREATE TABLE `articlereactions` (
-  `reactionID` int(11) NOT NULL,
-  `reactionType` varchar(8) DEFAULT NULL,
-  `userID` int(11) DEFAULT NULL,
-  `articleID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `articlereactions`
---
-
-INSERT INTO `articlereactions` (`reactionID`, `reactionType`, `userID`, `articleID`) VALUES
-(1, 'LIKE', 1, 1),
-(2, 'LIKE', 2, 1),
-(3, 'LIKE', 3, 1),
-(4, 'DISLIKE', 4, 8),
-(5, 'DISLIKE', 5, 8),
-(6, 'LIKE', 6, 9);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `articles`
 --
 
+DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (
   `articleID` int(11) NOT NULL,
   `outletID` int(11) DEFAULT NULL,
@@ -116,34 +96,7 @@ INSERT INTO `articles` (`articleID`, `outletID`, `authorName`, `articleURL`, `ar
 (3, 1, 'John Doe', 'https://www.courts.ns.ca/', 'This is Small Claims Court sample article 3', 'Eget est lorem ipsum dolor sit amet consectetur. Orci nulla pellentesque dignissim enim sit. A diam sollicitudin tempor id eu nisl nunc mi. Interdum consectetur libero id faucibus nisl. Egestas sed sed risus pretium. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Et pharetra pharetra massa massa ultricies mi quis hendrerit. Nisl condimentum id venenatis a condimentum vitae sapien. Arcu risus quis varius quam quisque id diam vel. Volutpat odio facilisis mauris sit amet massa vitae tortor. Pharetra sit amet aliquam id diam maecenas. Sed odio morbi quis commodo.\n', '2021-12-07 19:53:21'),
 (4, 2, 'Jane Doe', 'https://www.courts.ns.ca/', 'This is Provincial Court sample article 1', 'Quam vulputate dignissim suspendisse in est ante in nibh. Sit amet venenatis urna cursus eget nunc scelerisque. At tellus at urna condimentum mattis. Porttitor leo a diam sollicitudin tempor id. Purus gravida quis blandit turpis. Massa sed elementum tempus egestas sed sed. Volutpat est velit egestas dui id ornare arcu odio. Ultricies leo integer malesuada nunc vel. Rhoncus urna neque viverra justo nec ultrices dui sapien eget. Fames ac turpis egestas integer eget. Porttitor massa id neque aliquam vestibulum.\n', '2021-12-07 19:53:21'),
 (5, 2, 'Jane Doe', 'https://www.courts.ns.ca/', 'This is Provincial Court sample article 2', 'Vitae tortor condimentum lacinia quis vel eros donec ac odio. Ut aliquam purus sit amet luctus venenatis lectus. Pretium lectus quam id leo. Eget nullam non nisi est sit amet facilisis magna. Odio morbi quis commodo odio aenean sed adipiscing diam. Lectus arcu bibendum at varius vel pharetra vel turpis nunc. Amet mauris commodo quis imperdiet massa tincidunt nunc. Tempus iaculis urna id volutpat lacus laoreet non curabitur. Amet venenatis urna cursus eget nunc scelerisque viverra mauris. Vitae nunc sed velit dignissim sodales ut eu sem integer. Amet est placerat in egestas erat. Dignissim suspendisse in est ante in nibh. Ornare suspendisse sed nisi lacus sed.\n', '2021-12-07 19:53:21'),
-(6, 2, 'Jane Doe', 'https://www.courts.ns.ca/', 'This is Provincial Court sample article 3', 'Lobortis feugiat vivamus at augue eget arcu dictum. Odio ut sem nulla pharetra diam sit. Nisl tincidunt eget nullam non nisi. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Et netus et malesuada fames ac turpis. Id leo in vitae turpis massa. Velit dignissim sodales ut eu sem integer vitae justo. Vulputate sapien nec sagittis aliquam malesuada. Aliquam eleifend mi in nulla posuere sollicitudin. Mi proin sed libero enim sed faucibus turpis. Suspendisse potenti nullam ac tortor vitae purus faucibus.\n', '2021-12-07 19:53:21'),
-(7, 3, 'Joe Doe', 'https://www.courts.ns.ca/', 'This is Supreme Court sample article 1', 'Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Faucibus purus in massa tempor nec feugiat nisl pretium. Placerat orci nulla pellentesque dignissim. Tempor id eu nisl nunc. Eget nulla facilisi etiam dignissim diam quis enim. Cursus eget nunc scelerisque viverra mauris in aliquam. Id faucibus nisl tincidunt eget. Tincidunt id aliquet risus feugiat in ante. Ut morbi tincidunt augue interdum velit euismod in. Urna porttitor rhoncus dolor purus. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida. Massa id neque aliquam vestibulum morbi blandit cursus. Elementum facilisis leo vel fringilla. Gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim. Morbi tristique senectus et netus et. Dictumst vestibulum rhoncus est pellentesque elit. Et molestie ac feugiat sed. Molestie a iaculis at erat pellentesque.\n', '2021-12-07 19:53:21'),
-(8, 3, 'Joe Doe', 'https://www.courts.ns.ca/', 'This is Supreme Court sample article 2', 'Et molestie ac feugiat sed lectus. Blandit libero volutpat sed cras. Accumsan in nisl nisi scelerisque eu. Fermentum dui faucibus in ornare quam. Scelerisque eu ultrices vitae auctor eu augue ut lectus. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Sit amet risus nullam eget. Convallis posuere morbi leo urna molestie at elementum eu facilisis. Pellentesque adipiscing commodo elit at imperdiet dui. Nisi vitae suscipit tellus mauris a diam maecenas sed. Enim eu turpis egestas pretium aenean pharetra magna ac. Donec massa sapien faucibus et molestie. Nunc non blandit massa enim. Neque egestas congue quisque egestas diam in.\n', '2021-12-07 19:53:21'),
-(9, 3, 'Joe Doe', 'https://www.courts.ns.ca/', 'This is Supreme Court sample article 3', 'Enim tortor at auctor urna nunc id cursus metus. Ut sem nulla pharetra diam sit amet nisl. Id porta nibh venenatis cras sed felis eget. Adipiscing commodo elit at imperdiet dui accumsan sit amet nulla. Eu volutpat odio facilisis mauris sit. In fermentum et sollicitudin ac orci phasellus egestas tellus rutrum. Tellus mauris a diam maecenas sed enim ut sem. Lacinia at quis risus sed vulputate odio ut. Sem fringilla ut morbi tincidunt augue interdum. Ultrices dui sapien eget mi proin. Iaculis at erat pellentesque adipiscing commodo elit.\n', '2021-12-07 19:53:21');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `commentreactions`
---
-
-CREATE TABLE `commentreactions` (
-  `reactionID` int(11) NOT NULL,
-  `reactionType` varchar(8) DEFAULT NULL,
-  `userID` int(11) DEFAULT NULL,
-  `commentID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `commentreactions`
---
-
-INSERT INTO `commentreactions` (`reactionID`, `reactionType`, `userID`, `commentID`) VALUES
-(1, 'LIKE', 1, 2),
-(2, 'LIKE', 1, 3),
-(3, 'LIKE', 2, 1),
-(4, 'LIKE', 2, 3),
-(5, 'DISLIKE', 3, 4);
+(8, 3, 'Joe Doe', 'https://www.courts.ns.ca/', 'This is Supreme Court sample article 2', 'Et molestie ac feugiat sed lectus. Blandit libero volutpat sed cras. Accumsan in nisl nisi scelerisque eu. Fermentum dui faucibus in ornare quam. Scelerisque eu ultrices vitae auctor eu augue ut lectus. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Sit amet risus nullam eget. Convallis posuere morbi leo urna molestie at elementum eu facilisis. Pellentesque adipiscing commodo elit at imperdiet dui. Nisi vitae suscipit tellus mauris a diam maecenas sed. Enim eu turpis egestas pretium aenean pharetra magna ac. Donec massa sapien faucibus et molestie. Nunc non blandit massa enim. Neque egestas congue quisque egestas diam in.\n', '2021-12-07 19:53:21');
 
 -- --------------------------------------------------------
 
@@ -151,6 +104,7 @@ INSERT INTO `commentreactions` (`reactionID`, `reactionType`, `userID`, `comment
 -- Table structure for table `moderators`
 --
 
+DROP TABLE IF EXISTS `moderators`;
 CREATE TABLE `moderators` (
   `modID` int(11) NOT NULL,
   `userID` int(11) DEFAULT NULL
@@ -171,6 +125,7 @@ INSERT INTO `moderators` (`modID`, `userID`) VALUES
 -- Table structure for table `outlets`
 --
 
+DROP TABLE IF EXISTS `outlets`;
 CREATE TABLE `outlets` (
   `outletID` int(11) NOT NULL,
   `outletName` varchar(255) DEFAULT NULL
@@ -191,6 +146,7 @@ INSERT INTO `outlets` (`outletID`, `outletName`) VALUES
 -- Table structure for table `userhashes`
 --
 
+DROP TABLE IF EXISTS `userhashes`;
 CREATE TABLE `userhashes` (
   `privateID` varchar(255) NOT NULL,
   `passwordHash` varchar(128) DEFAULT NULL
@@ -217,6 +173,7 @@ INSERT INTO `userhashes` (`privateID`, `passwordHash`) VALUES
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `userID` int(11) NOT NULL,
   `privateID` varchar(255) DEFAULT NULL,
@@ -234,7 +191,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `privateID`, `userName`, `firstName`, `lastName`, `emailAddress`, `registrationDate`, `verificationStatus`, `profileVisibility`) VALUES
-(1, 'f19ba6dfb62dc68cf6ee4d68205cc5f5', 'Site Administator', '', '', 'usersadmin@novascotialegalnews.ca', '2021-12-07 19:53:21', 1, 1),
+(1, 'f19ba6dfb62dc68cf6ee4d68205cc5f5', 'Admin', '', '', 'usersadmin@novascotialegalnews.ca', '2021-12-07 19:53:21', 1, 1),
 (2, '48f5c010578708ca863e20acb40cb404', 'Art', 'Arthur', 'Kirkland', 'kirkland@novascotialegalnews.ca', '2021-12-07 19:53:21', 1, 1),
 (3, '58c25b1bb0841ca15c547d3f8373ed70', 'Frank', 'Francis', 'Rayford', 'rayford@novascotialegalnews.ca', '2021-12-07 19:53:21', 1, 1),
 (4, 'a9ab03d9a5ca5503f37cba8bb8f7bdfb', 'Henry', 'Henry', 'Fleming', 'fleming@novascotialegalnews.ca', '2021-12-07 19:53:21', 1, 1),
@@ -250,6 +207,7 @@ INSERT INTO `users` (`userID`, `privateID`, `userName`, `firstName`, `lastName`,
 -- Table structure for table `usersaltandpepper`
 --
 
+DROP TABLE IF EXISTS `usersaltandpepper`;
 CREATE TABLE `usersaltandpepper` (
   `privateID` varchar(255) NOT NULL,
   `userSalt` varchar(128) DEFAULT NULL,
@@ -277,6 +235,7 @@ INSERT INTO `usersaltandpepper` (`privateID`, `userSalt`, `userPepper`) VALUES
 -- Table structure for table `usersfollowsoutlets`
 --
 
+DROP TABLE IF EXISTS `usersfollowsoutlets`;
 CREATE TABLE `usersfollowsoutlets` (
   `userID` int(11) DEFAULT NULL,
   `outletID` int(11) DEFAULT NULL
@@ -309,6 +268,7 @@ INSERT INTO `usersfollowsoutlets` (`userID`, `outletID`) VALUES
 -- Table structure for table `usersfollowsusers`
 --
 
+DROP TABLE IF EXISTS `usersfollowsusers`;
 CREATE TABLE `usersfollowsusers` (
   `userID` int(11) DEFAULT NULL,
   `followID` int(11) DEFAULT NULL
@@ -367,27 +327,11 @@ ALTER TABLE `articlecomments`
   ADD KEY `articleID` (`articleID`);
 
 --
--- Indexes for table `articlereactions`
---
-ALTER TABLE `articlereactions`
-  ADD PRIMARY KEY (`reactionID`),
-  ADD KEY `userID` (`userID`),
-  ADD KEY `articleID` (`articleID`);
-
---
 -- Indexes for table `articles`
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`articleID`),
   ADD KEY `outletID` (`outletID`);
-
---
--- Indexes for table `commentreactions`
---
-ALTER TABLE `commentreactions`
-  ADD PRIMARY KEY (`reactionID`),
-  ADD KEY `userID` (`userID`),
-  ADD KEY `commentID` (`commentID`);
 
 --
 -- Indexes for table `moderators`
@@ -452,22 +396,10 @@ ALTER TABLE `articlecomments`
   MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `articlereactions`
---
-ALTER TABLE `articlereactions`
-  MODIFY `reactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
   MODIFY `articleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `commentreactions`
---
-ALTER TABLE `commentreactions`
-  MODIFY `reactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `moderators`
@@ -505,24 +437,10 @@ ALTER TABLE `articlecomments`
   ADD CONSTRAINT `articlecomments_ibfk_2` FOREIGN KEY (`articleID`) REFERENCES `articles` (`articleID`);
 
 --
--- Constraints for table `articlereactions`
---
-ALTER TABLE `articlereactions`
-  ADD CONSTRAINT `articlereactions_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
-  ADD CONSTRAINT `articlereactions_ibfk_2` FOREIGN KEY (`articleID`) REFERENCES `articles` (`articleID`);
-
---
 -- Constraints for table `articles`
 --
 ALTER TABLE `articles`
   ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`outletID`) REFERENCES `outlets` (`outletID`);
-
---
--- Constraints for table `commentreactions`
---
-ALTER TABLE `commentreactions`
-  ADD CONSTRAINT `commentreactions_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
-  ADD CONSTRAINT `commentreactions_ibfk_2` FOREIGN KEY (`commentID`) REFERENCES `articlecomments` (`commentID`);
 
 --
 -- Constraints for table `moderators`

@@ -63,6 +63,7 @@
             </div>
             <button class="btn btn-info btn-lg" name="contact-us" type="submit" >Submit Message</button>
         </form>
+        <br>
     </div>
 </main>
 

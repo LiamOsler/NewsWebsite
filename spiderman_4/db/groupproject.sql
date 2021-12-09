@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `groupproject`
 --
-CREATE DATABASE IF NOT EXISTS `groupproject` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `groupproject`;
+CREATE DATABASE IF NOT EXISTS `liamosle_groupproject` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `liamosle_groupproject`;
 
 -- --------------------------------------------------------
 

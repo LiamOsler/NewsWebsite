@@ -1,4 +1,4 @@
-### Nova Scotia Court News Website
+### News Website
 
 #### Early concept homepage design:
 <img src="READMEimg/concept1.png" height="400">
@@ -11,11 +11,6 @@
 - Liam Osler 
 - Rachel Woodside
 ---
-
-### How to use our website:
-- Nova Scotia Legal News is a one-stop shop for court decisions and legal news articles. Recent rulings are pulled from the courts of Nova Scotia and presented to the public in a user friendly manner. We also host articles regarding Nova Scotia law, written by verified journalists and legal professionals.
-- Our website also allows users to interact with the law by creating accounts, commenting on decisions/articles, and being able to follow other users.
-- On our frontpage we present some recent rulings/articles, as well as a search bar to look for specific articles. We also have an advance search feature that lets users search articles by title, author or contents.
 
 ---
 
@@ -30,11 +25,11 @@
 
 ### Website goals: 
 
-- Aggregate rulings from the Courts of Nova Scotia, present them in an accessible and easy to read fashion for users from a broad range of demographics.
-- Index page "newsfeed" that aggregates sources such as the Courts of Nova Scotia's RSS Feed, CanLII's Nova Scotia RSS Feeds and other local news outlets for stories relevant to the court rulings and legislation in Nova Scotia.
+- User registration with efficient and user-friendly input validation
 - Means for users to add comments and/or reactions to the content on the Index page.
 - Means for users to "follow" a certain topic, ruling, user, or other items.
-- Provide a forum for discussions about Nova Scotia court rulings, legislation and legal affairs.
+- Provide a forum for discussions about about articles.
+- Use Bootstrap to craft the front end
 
 ---
 

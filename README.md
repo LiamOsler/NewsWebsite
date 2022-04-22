@@ -1,7 +1,7 @@
-### News Website
+### Nova Scotia Court News Website
 
 #### Early concept homepage design:
-<img src="READMEimg/concept1.png" height="400">
+<img src="img/READMEimg//concept1.png" height="400">
 
 --- 
 
@@ -11,6 +11,27 @@
 - Liam Osler 
 - Rachel Woodside
 ---
+
+### Submission URLs:
+
+Adam:   
+- https://web.cs.dal.ca/~amelvin/project_SpiderMan4/
+
+Liam:   
+- https://web.cs.dal.ca/~osler/csci2170/project/
+- http://www.liamosler.ca/projects/legalnews
+
+Rachel: 
+- https://web.cs.dal.ca/~rwoodside/
+
+
+
+
+
+### How to use our website:
+- Nova Scotia Legal News is a one-stop shop for court decisions and legal news articles. Recent rulings are pulled from the courts of Nova Scotia and presented to the public in a user friendly manner. We also host articles regarding Nova Scotia law, written by verified journalists and legal professionals.
+- Our website also allows users to interact with the law by creating accounts, commenting on decisions/articles, and being able to follow other users.
+- On our frontpage we present some recent rulings/articles, as well as a search bar to look for specific articles. We also have an advance search feature that lets users search articles by title, author or contents.
 
 ---
 
@@ -25,11 +46,11 @@
 
 ### Website goals: 
 
-- User registration with efficient and user-friendly input validation
+- Aggregate rulings from the Courts of Nova Scotia, present them in an accessible and easy to read fashion for users from a broad range of demographics.
+- Index page "newsfeed" that aggregates sources such as the Courts of Nova Scotia's RSS Feed, CanLII's Nova Scotia RSS Feeds and other local news outlets for stories relevant to the court rulings and legislation in Nova Scotia.
 - Means for users to add comments and/or reactions to the content on the Index page.
 - Means for users to "follow" a certain topic, ruling, user, or other items.
-- Provide a forum for discussions about about articles.
-- Use Bootstrap to craft the front end
+- Provide a forum for discussions about Nova Scotia court rulings, legislation and legal affairs.
 
 ---
 
@@ -72,13 +93,13 @@
 
 
 ### Database Schema:
-![Image of Schema](READMEimg/dbschema-2.png)
+![Image of Schema](img/READMEimg//dbschema-2.png)
 
 
 ## Sample Code:
 
 ### Registering users
-![User Registration Form](READMEimg/registration1.png)
+![User Registration Form](img/READMEimg//registration1.png)
 
 ```php
 <?php
@@ -98,7 +119,7 @@ if (strlen($email)>0) {
                     WHERE `emailAddress` = '{$email}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -116,7 +137,7 @@ if (strlen($username)>0) {
                     WHERE `userName` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -145,7 +166,7 @@ if($registrationValid == TRUE){
                     WHERE `userName` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $_SESSION["userID"] = $current["userID"];
 
         $privateID = $current["privateID"];
@@ -159,15 +180,14 @@ if($registrationValid == TRUE){
                         WHERE `privateID` = '{$privateID}'";
         $saltresult = $dbconn->query($querySQL);
 
-        foreach($saltresult as $saltcurrent){
+        while ($saltcurrent = $saltresult->fetch_assoc()){
             $userSalt = $saltcurrent["userSalt"];
             $userPepper = $saltcurrent["userPepper"]; 
             
             $querySQL = "   INSERT INTO `userHashes` VALUES
                             ('{$privateID}', MD5(CONCAT('{$userSalt}', MD5('{$password}'), '{$userPepper}')))
                             ";
-                        
-
+                    
             $_SESSION["userName"] = $username;
 
             $dbconn->query($querySQL);
@@ -180,7 +200,7 @@ header("Location: index.php");
 ?>
 ```
 ### Checking that inputs conform to standards:
-![User Registration Form](READMEimg/registration3.png)
+![User Registration Form](img/READMEimg//registration3.png)
 
 ```php
     <div class="col-md-6 mb-6">
@@ -190,7 +210,7 @@ header("Location: index.php");
 ```
 
 ### Validating emails are unique:
-![User Registration Form](READMEimg/registration2.png)
+![User Registration Form](img/READMEimg//registration2.png)
 ```php
 <?php
 $xmlDoc=new DOMDocument();
@@ -207,7 +227,7 @@ if (strlen($email)>0) {
                     WHERE `emailAddress` = '{$email}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -221,7 +241,7 @@ else{
 ```
 
 ### Checking that usernames are unique:
-![User Registration Form](READMEimg/registration4.png)
+![User Registration Form](img/READMEimg//registration4.png)
 ```php
 
 <?php
@@ -237,7 +257,7 @@ if (strlen($username)>0) {
                     WHERE `userName` = '{$username}'";
     $result = $dbconn->query($querySQL);
 
-    foreach($result as $current){
+    while ($current = $result->fetch_assoc()){
         $resultCount+=1;
     }
 }
@@ -317,7 +337,7 @@ FROM `userSaltAndPepper`;
 ```
 
 ### User enters their password in the login modal:
-![Image of login salt, pepper and hashing](READMEimg/login-2.png)
+![Image of login salt, pepper and hashing](img/READMEimg//login-2.png)
 
 ### Password input check salting routine (with print output) in PHP:
 ```php
@@ -341,7 +361,7 @@ FROM `userSaltAndPepper`;
         echo("Username or Password Incorrect");
     }  
     else{
-        foreach($result as $current){
+        while ($current = $result->fetch_assoc()){
             $privateID = $current["privateID"];
             echo "<br>";
             echo("Username found, privateID " );
@@ -354,7 +374,7 @@ FROM `userSaltAndPepper`;
                             WHERE privateID = '{$privateID}'";
             $result = $dbconn->query($querySQL);
 
-            foreach($result as $current){
+            while ($current = $result->fetch_assoc()){
                 $userSalt = $current["userSalt"];
                 $userPepper = $current["userPepper"] ;
                 echo "<br>";
@@ -380,7 +400,7 @@ FROM `userSaltAndPepper`;
                 $querySQL = "   SELECT privateID, passwordHash from userHashes
                                 WHERE privateID = '{$privateID}'";
                 $result = $dbconn->query($querySQL);
-                foreach($result as $current){
+                while ($current = $result->fetch_assoc()){
                     $passwordHash = $current["passwordHash"];
                     echo "<br>";
                     echo "<br>";
@@ -405,9 +425,9 @@ FROM `userSaltAndPepper`;
 ```
 
 ### The output of the code above when the password is correct:
-![Image of login salt, pepper and hashing](READMEimg/login-3.png)
+![Image of login salt, pepper and hashing](img/READMEimg//login-3.png)
 ### The output of the code above when the password is incorrect:
-![Image of login salt, pepper and hashing](READMEimg/login-4.png)
+![Image of login salt, pepper and hashing](img/READMEimg//login-4.png)
 ### Explanation:
 1. The user's input is displayed (as shown in the figure above, "Art" is the username and "password" is the password)
 2. The database is queried for the username, and if it is found the username and the user's privateID are displayed. If the username is not found the string "Username or Password Incorrect" is displayed.
@@ -437,7 +457,7 @@ FROM `userSaltAndPepper`;
     }  
     else{
         //Get the first result as the current item:
-        foreach($result as $current){
+        while ($current = $result->fetch_assoc()){
             //Set the userID, userName and privateID to their own variables:
             $userID = $current["userID"];
             $userName = $current["userName"];
@@ -448,7 +468,7 @@ FROM `userSaltAndPepper`;
             $result = $dbconn->query($querySQL);
 
             //Get the first result as the current item:
-            foreach($result as $current){
+            while ($current = $result->fetch_assoc()){
                 //Set the user's salt and peppers to their own variables:
                 $userSalt = $current["userSalt"];
                 $userPepper = $current["userPepper"] ;
@@ -461,7 +481,7 @@ FROM `userSaltAndPepper`;
                 $querySQL = "   SELECT privateID, passwordHash from userHashes
                                 WHERE privateID = '{$privateID}'";
                 $result = $dbconn->query($querySQL);
-                foreach($result as $current){
+                while ($current = $result->fetch_assoc()){
                     //Set the user's hashed password to variable:
                     $passwordHash = $current["passwordHash"];
                 }
@@ -489,7 +509,7 @@ FROM `userSaltAndPepper`;
 ?>    
 ```
 ### When the user logs in successfully, the text in the login button is replaced with "My Profile" and an option to "Logout" is shown with an open door icon: 
-![Image of login salt, pepper and hashing](READMEimg/login-5.png)
+![Image of login salt, pepper and hashing](img/READMEimg//login-5.png)
 
 ### Citations
 1.  Title: UXPin 

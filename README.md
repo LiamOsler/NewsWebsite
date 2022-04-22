@@ -509,7 +509,7 @@ FROM `userSaltAndPepper`;
 ?>    
 ```
 ### When the user logs in successfully, the text in the login button is replaced with "My Profile" and an option to "Logout" is shown with an open door icon: 
-![Image of login salt, pepper and hashing](img/READMEimg//login-5.png)
+![Image of login salt, pepper and hashing](READMEimg/login-5.png)
 
 ### Citations
 1.  Title: UXPin 

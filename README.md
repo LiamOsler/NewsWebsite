@@ -1,7 +1,7 @@
 ### Nova Scotia Court News Website
 
 #### Early concept homepage design:
-<img src="img/READMEimg//concept1.png" height="400">
+<img src="READMEimg/concept1.png" height="400">
 
 --- 
 
@@ -93,13 +93,13 @@ Rachel:
 
 
 ### Database Schema:
-![Image of Schema](img/READMEimg//dbschema-2.png)
+![Image of Schema](READMEimg/dbschema-2.png)
 
 
 ## Sample Code:
 
 ### Registering users
-![User Registration Form](img/READMEimg//registration1.png)
+![User Registration Form](READMEimg/registration1.png)
 
 ```php
 <?php

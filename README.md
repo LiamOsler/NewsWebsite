@@ -200,7 +200,7 @@ header("Location: index.php");
 ?>
 ```
 ### Checking that inputs conform to standards:
-![User Registration Form](img/READMEimg//registration3.png)
+![User Registration Form](READMEimg/registration3.png)
 
 ```php
     <div class="col-md-6 mb-6">
@@ -210,7 +210,7 @@ header("Location: index.php");
 ```
 
 ### Validating emails are unique:
-![User Registration Form](img/READMEimg//registration2.png)
+![User Registration Form](READMEimg//registration2.png)
 ```php
 <?php
 $xmlDoc=new DOMDocument();
@@ -241,7 +241,7 @@ else{
 ```
 
 ### Checking that usernames are unique:
-![User Registration Form](img/READMEimg//registration4.png)
+![User Registration Form](READMEimg/registration4.png)
 ```php
 
 <?php
@@ -337,7 +337,7 @@ FROM `userSaltAndPepper`;
 ```
 
 ### User enters their password in the login modal:
-![Image of login salt, pepper and hashing](img/READMEimg//login-2.png)
+![Image of login salt, pepper and hashing](READMEimg/login-2.png)
 
 ### Password input check salting routine (with print output) in PHP:
 ```php
@@ -425,9 +425,9 @@ FROM `userSaltAndPepper`;
 ```
 
 ### The output of the code above when the password is correct:
-![Image of login salt, pepper and hashing](img/READMEimg//login-3.png)
+![Image of login salt, pepper and hashing](READMEimg/login-3.png)
 ### The output of the code above when the password is incorrect:
-![Image of login salt, pepper and hashing](img/READMEimg//login-4.png)
+![Image of login salt, pepper and hashing](READMEimg/login-4.png)
 ### Explanation:
 1. The user's input is displayed (as shown in the figure above, "Art" is the username and "password" is the password)
 2. The database is queried for the username, and if it is found the username and the user's privateID are displayed. If the username is not found the string "Username or Password Incorrect" is displayed.

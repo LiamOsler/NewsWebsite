@@ -12,19 +12,8 @@
 - Rachel Woodside
 ---
 
-### Submission URLs:
-
-Adam:   
-- https://web.cs.dal.ca/~amelvin/project_SpiderMan4/
-
-Liam:   
+### Hosted Version:
 - https://web.cs.dal.ca/~osler/csci2170/project/
-- http://www.liamosler.ca/projects/legalnews
-
-Rachel: 
-- https://web.cs.dal.ca/~rwoodside/
-
-
 
 
 
